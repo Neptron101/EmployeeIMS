@@ -22,14 +22,13 @@ public class FXMLDocumentController implements Initializable {
     private Label label;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private void handlelogInAction(){
+        System.out.println("Log In");
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }    
     
 }
