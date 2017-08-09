@@ -1,4 +1,4 @@
-/**
+package empims; /**
  * Created by Sarah Fromming on 6/08/2017.
  */
 
@@ -23,7 +23,14 @@ public class Employee {
     public final String getLastName() {
         return lastNameProperty().get();
     }
-    public final void serLastName(String lastName) {
+    public final void setLastName(String lastName) {
         lastNameProperty().set(lastName);
+    }
+
+    public Employee(){}
+
+    public Employee(String firstName, String lastName) {
+        setFirstName(firstName);
+        setLastName(lastName);
     }
 }
