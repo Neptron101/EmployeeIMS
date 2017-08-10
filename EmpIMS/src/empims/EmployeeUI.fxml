@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="empims.FXMLEmployeeController">
@@ -38,9 +39,12 @@
             </MenuBar>
             <HBox spacing="10.0">
                <children>
-                  <TextField />
-                  <TextField />
-                  <Button mnemonicParsing="false" onAction="#searchButtonClicked" text="Search" />
+                  <Label contentDisplay="CENTER" text="Filter Table:" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtSearch" />
                </children>
                <VBox.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
@@ -50,7 +54,7 @@
       </VBox>
    </top>
    <left>
-      <TableView fx:id="EmployeeTbl" BorderPane.alignment="CENTER">
+      <TableView fx:id="EmployeeTbl" onMouseClicked="#getRowData" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="firstNameCol" prefWidth="75.0" text="First Name" />
           <TableColumn fx:id="lastNameCol" prefWidth="75.0" text="Last Name" />
@@ -68,11 +72,17 @@
       </HBox>
    </bottom>
    <right>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Modify" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Delete" />
-            <Button layoutX="15.0" layoutY="50.0" mnemonicParsing="false" text="Save" />
+            <Button layoutX="15.0" layoutY="50.0" mnemonicParsing="false" text="Save">
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin></Button>
+            <Region VBox.vgrow="ALWAYS" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Delete">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin></Button>
          </children>
          <BorderPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -95,7 +105,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="txtFirstName" editable="false" />
+                  <TextField fx:id="txtFirstName" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -114,7 +124,7 @@
                         <Insets top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="txtFirstName1" editable="false">
+                  <TextField fx:id="txtLastName">
                      <HBox.margin>
                         <Insets left="2.0" />
                      </HBox.margin>

@@ -8,113 +8,241 @@
     <schema id="3" parent="1" name="sql12175092">
       <Visible>1</Visible>
     </schema>
-    <table id="4" parent="3" name="Assigned"/>
+    <table id="4" parent="3" name="Assignment"/>
     <table id="5" parent="3" name="Employee"/>
     <table id="6" parent="3" name="Login"/>
-    <table id="7" parent="3" name="Projects"/>
-    <table id="8" parent="3" name="Roles"/>
-    <column id="9" parent="4" name="ID">
+    <table id="7" parent="3" name="Notification"/>
+    <table id="8" parent="3" name="Projects"/>
+    <table id="9" parent="3" name="Report"/>
+    <table id="10" parent="3" name="Roles"/>
+    <column id="11" parent="4" name="ID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="10" parent="4" name="EmployeeID">
+    <column id="12" parent="4" name="EmployeeID">
       <Position>2</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>int(11)|0</DataType>
     </column>
-    <column id="11" parent="4" name="ProjectID">
+    <column id="13" parent="4" name="ProjectID">
       <Position>3</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>int(11)|0</DataType>
     </column>
-    <key id="12" parent="4" name="PRIMARY">
+    <index id="14" parent="4" name="Emp_FK_idx">
+      <ColNames>EmployeeID</ColNames>
+    </index>
+    <index id="15" parent="4" name="Proj_FK_idx">
+      <ColNames>ProjectID</ColNames>
+    </index>
+    <key id="16" parent="4" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="13" parent="5" name="ID">
+    <foreign-key id="17" parent="4" name="Emp2_FK">
+      <ColNames>EmployeeID</ColNames>
+      <RefSchemaName>sql12175092</RefSchemaName>
+      <RefTableName>Employee</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="18" parent="4" name="Proj_FK">
+      <ColNames>ProjectID</ColNames>
+      <RefSchemaName>sql12175092</RefSchemaName>
+      <RefTableName>Projects</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="19" parent="5" name="ID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="14" parent="5" name="FirstName">
+    <column id="20" parent="5" name="FirstName">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="15" parent="5" name="LastName">
+    <column id="21" parent="5" name="LastName">
       <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="16" parent="5" name="Email">
+    <column id="22" parent="5" name="Email">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="17" parent="5" name="Phone">
+    <column id="23" parent="5" name="Phone">
       <Position>5</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="18" parent="5" name="Role">
+    <column id="24" parent="5" name="Role">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="19" parent="5" name="PRIMARY">
+    <index id="25" parent="5" name="ID_idx">
+      <ColNames>Role</ColNames>
+    </index>
+    <key id="26" parent="5" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="20" parent="6" name="EmpID">
+    <foreign-key id="27" parent="5" name="Role_FK">
+      <ColNames>Role</ColNames>
+      <RefSchemaName>sql12175092</RefSchemaName>
+      <RefTableName>Roles</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="28" parent="6" name="EmpID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="21" parent="6" name="Password">
+    <column id="29" parent="6" name="Password">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <index id="22" parent="6" name="EmpID_UNIQUE">
-      <ColNames>EmpID</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="23" parent="6" name="PRIMARY">
+    <key id="30" parent="6" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>EmpID</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="24" parent="6" name="EmpID_UNIQUE">
+    <foreign-key id="31" parent="6" name="Emp_FK">
       <ColNames>EmpID</ColNames>
-      <UnderlyingIndexName>EmpID_UNIQUE</UnderlyingIndexName>
-    </key>
-    <column id="25" parent="7" name="ID">
+      <RefSchemaName>sql12175092</RefSchemaName>
+      <RefTableName>Employee</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="32" parent="7" name="ID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="26" parent="7" name="Name">
+    <column id="33" parent="7" name="Title">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="27" parent="7" name="Description">
+    <column id="34" parent="7" name="Description">
+      <Position>3</Position>
+      <DataType>varchar(420)|0</DataType>
+    </column>
+    <column id="35" parent="7" name="Emp_ID">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="36" parent="7" name="Date">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <index id="37" parent="7" name="Emp3_FK_idx">
+      <ColNames>Emp_ID</ColNames>
+    </index>
+    <index id="38" parent="7" name="ID_UNIQUE">
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="39" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="40" parent="7" name="ID_UNIQUE">
+      <ColNames>ID</ColNames>
+      <UnderlyingIndexName>ID_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="41" parent="7" name="Emp3_FK">
+      <ColNames>Emp_ID</ColNames>
+      <RefSchemaName>sql12175092</RefSchemaName>
+      <RefTableName>Employee</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="42" parent="8" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="43" parent="8" name="Name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="44" parent="8" name="Description">
       <Position>3</Position>
       <DataType>longtext|0</DataType>
     </column>
-    <key id="28" parent="7" name="PRIMARY">
+    <key id="45" parent="8" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="29" parent="8" name="ID">
+    <column id="46" parent="9" name="ID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="30" parent="8" name="Name">
+    <column id="47" parent="9" name="Date">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="48" parent="9" name="Title">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="49" parent="9" name="Description">
+      <Position>4</Position>
+      <DataType>varchar(420)|0</DataType>
+    </column>
+    <column id="50" parent="9" name="Emp_ID">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="51" parent="9" name="Proj_ID">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="52" parent="9" name="Emp4_FK_idx">
+      <ColNames>Emp_ID</ColNames>
+    </index>
+    <index id="53" parent="9" name="ID_UNIQUE">
+      <ColNames>ID</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="54" parent="9" name="Proj2_FK_idx">
+      <ColNames>Proj_ID</ColNames>
+    </index>
+    <key id="55" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="56" parent="9" name="ID_UNIQUE">
+      <ColNames>ID</ColNames>
+      <UnderlyingIndexName>ID_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="57" parent="9" name="Emp4_FK">
+      <ColNames>Emp_ID</ColNames>
+      <RefSchemaName>sql12175092</RefSchemaName>
+      <RefTableName>Employee</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="58" parent="9" name="Proj2_FK">
+      <ColNames>Proj_ID</ColNames>
+      <RefSchemaName>sql12175092</RefSchemaName>
+      <RefTableName>Projects</RefTableName>
+      <RefColNames>ID</RefColNames>
+    </foreign-key>
+    <column id="59" parent="10" name="ID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="60" parent="10" name="Name">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <key id="31" parent="8" name="PRIMARY">
+    <key id="61" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID</ColNames>
       <Primary>1</Primary>
