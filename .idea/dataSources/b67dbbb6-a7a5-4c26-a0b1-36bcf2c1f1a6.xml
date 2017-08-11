@@ -238,7 +238,7 @@
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="60" parent="10" name="Name">
+    <column id="60" parent="10" name="Role">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
     </column>

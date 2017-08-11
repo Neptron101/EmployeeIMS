@@ -11,29 +11,23 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  * @author Bikin Maharjan
  */
 public class FXMLDocumentController implements Initializable {
+    public boolean admin = false;
 
     @FXML
     private Label invalid_lbl;
@@ -47,22 +41,28 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button btnLogin;
 
-    private ObservableList<Login> LoginData;
     private DbConnection dc;
 
     @FXML
     private void handlelogInAction() throws IOException, SQLException {
-
-
         if (isValidCredentials()) {
-            System.out.println("Log In");
             Stage loginStage = (Stage) btnLogin.getScene().getWindow();
+            /*if (admin = true) {
+                System.out.println("Admin Log In...");
+
+                FXMLLoader adminLoader = new FXMLLoader(getClass().getResource("AdminUI.fxml"));
+                Parent root = (Parent) adminLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+                loginStage.hide();
+            }*/
+            System.out.println("Employee Log In...");
 
             FXMLLoader employeeLoader = new FXMLLoader(getClass().getResource("EmployeeUI.fxml"));
             Parent root = (Parent) employeeLoader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            //stage.setOnHidden(e -> loginStage.show());
             stage.show();
             loginStage.hide();
         } else {
@@ -80,6 +80,7 @@ public class FXMLDocumentController implements Initializable {
         conn.setAutoCommit(false);
 
         Statement stmt = conn.createStatement();
+        Statement stmt2 = conn.createStatement();
 
         int ID = Integer.parseInt(txtUser.getText());
         String PW = txtPassword.getText();
@@ -87,12 +88,10 @@ public class FXMLDocumentController implements Initializable {
         ResultSet rs = stmt.executeQuery("SELECT * FROM sql12175092.Login WHERE EmpID= " + "'" + ID + "'" + " AND Password= " + "'" + PW + "'");
 
         while (rs.next()) {
-            /*Integer id = rs.getInt("EmpID");
-            System.out.println("EmpID = " + id);
-            System.out.println("User entered = " + ID);
-            String pw = rs.getString("Password");
-            System.out.println("Password = " + pw);
-            System.out.println("User entered = " + PW);*/
+            ResultSet rs2 = stmt2.executeQuery("SELECT * from sql12175092.Employee where ID = " + "'" + ID + "'");
+            while (rs2.next()) {
+                if ((rs2.getInt("Role") == 1) || (rs2.getInt("Role") == 2)) admin = true;
+            }
             let_in = true;
         }
         rs.close();
