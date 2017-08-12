@@ -10,12 +10,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
 import java.util.*;
 import java.sql.*;
-import java.util.stream.IntStream;
+
 
 /**
  * Created by Sarah Fromming on 10/08/2017.
  */
-public class FXMLEmployeeController implements Initializable {
+public class EmployeeUIController implements Initializable {
 
     @FXML
     private TableView<Employee> EmployeeTbl;
@@ -27,13 +27,28 @@ public class FXMLEmployeeController implements Initializable {
     private TableColumn<Employee, String> lastNameCol;
 
     @FXML
+    private TableColumn<Employee, Integer> idCol;
+
+    @FXML
     private TextField txtFirstName;
 
     @FXML
     private TextField txtLastName;
 
     @FXML
+    private TextField txtEmail;
+
+    @FXML
+    private TextField txtPhone;
+
+    @FXML
+    private TextField txtPosition;
+
+    @FXML
     private TextField txtSearch;
+
+    @FXML
+    private Label lblID;
 
     private ObservableList<Employee> EmpData;
     private DbConnection dc;
@@ -46,11 +61,11 @@ public class FXMLEmployeeController implements Initializable {
             Connection conn = dc.Connect();
             EmpData = FXCollections.observableArrayList();
             // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Employee");
-            ;
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Employee.ID, Employee.FirstName, Employee.LastName, Employee.Email, Employee.Phone, Roles.Role FROM Employee LEFT JOIN Roles ON Employee.Role = Roles.ID");
+
             while (rs.next()) {
                 //get string from db,whichever way
-                EmpData.add(new Employee(rs.getString("FirstName"), rs.getString("LastName")));
+                EmpData.add(new Employee(rs.getInt("ID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("Email"), rs.getString("Phone"), rs.getString("Role")));
             }
 
         } catch (SQLException ex) {
@@ -59,6 +74,8 @@ public class FXMLEmployeeController implements Initializable {
 
         //Set cell value factory to tableview.
         //NB.PropertyValue Factory must be the same with the one set in model class.
+
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 
@@ -78,6 +95,8 @@ public class FXMLEmployeeController implements Initializable {
                     return true;
                 } else if (Employee.getLastName().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
+                } else if (Employee.getId().equals(lowerCaseFilter)) {
+                    return true;
                 }
                 return false;
             });
@@ -91,11 +110,13 @@ public class FXMLEmployeeController implements Initializable {
     }
 
     public void getRowData() {
-        txtFirstName.setEditable(false);
-        txtLastName.setEditable(false);
         Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
+        lblID.setText(String.valueOf(employee.getId()));
         txtFirstName.setText(employee.getFirstName());
         txtLastName.setText(employee.getLastName());
+        txtEmail.setText(employee.getEmail());
+        txtPhone.setText(employee.getPhone());
+        txtPosition.setText(employee.getRole());
     }
 
     public void SaveChanges() {
