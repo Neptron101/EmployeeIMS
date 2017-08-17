@@ -74,6 +74,8 @@ public class Employee {
         roleProperty().set(role);
     }
 
+
+
     public Employee(){}
 
     public Employee(Integer id, String firstName, String lastName, String email, String phone, String role) {
