@@ -1,11 +1,14 @@
 package empims;
 
+import javafx.application.Application;
 import javafx.collections.*;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.*;
@@ -48,79 +51,36 @@ public class EmployeeUIController implements Initializable {
     private TextField txtSearch;
 
     @FXML
+    private ChoiceBox choiceBox;
+
+    @FXML
+    private HBox hBoxPos;
+
+    @FXML
+    private HBox hBoxSwap;
+
+    @FXML
+    private MenuItem close;
+
+    @FXML
     private Label lblID;
 
-    private ObservableList<Employee> EmpData;
-    private DbConnection dc;
+    private Methods fill;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        dc = new DbConnection();
-        try {
-            Connection conn = dc.Connect();
-            EmpData = FXCollections.observableArrayList();
-            // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT Employee.ID, Employee.FirstName, Employee.LastName, Employee.Email, Employee.Phone, Roles.Role FROM Employee LEFT JOIN Roles ON Employee.Role = Roles.ID");
-
-            while (rs.next()) {
-                //get string from db,whichever way
-                EmpData.add(new Employee(rs.getInt("ID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("Email"), rs.getString("Phone"), rs.getString("Role")));
-            }
-
-        } catch (SQLException ex) {
-            System.err.println("Error" + ex);
-        }
-
-        //Set cell value factory to tableview.
-        //NB.PropertyValue Factory must be the same with the one set in model class.
-
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-
-        EmployeeTbl.setItems(null);
-        EmployeeTbl.setItems(EmpData);
-
-        FilteredList<Employee> filteredData = new FilteredList<>(EmpData, p -> true);
-        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(Employee -> {
-                if (newValue == null || newValue.isEmpty()) {
-                    return true;
-                }
-
-                String lowerCaseFilter = newValue.toLowerCase();
-
-                if (Employee.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (Employee.getLastName().toLowerCase().contains(lowerCaseFilter)) {
-                    return true;
-                } else if (Employee.getId().equals(lowerCaseFilter)) {
-                    return true;
-                }
-                return false;
-            });
-        });
-
-        SortedList<Employee> sortedData = new SortedList<>(filteredData);
-
-        sortedData.comparatorProperty().bind(EmployeeTbl.comparatorProperty());
-
-        EmployeeTbl.setItems(sortedData);
+        fill = new Methods();
+        fill.initialize(idCol,firstNameCol,lastNameCol,EmployeeTbl,txtSearch);
     }
 
     public void getRowData() {
-        Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
-        lblID.setText(String.valueOf(employee.getId()));
-        txtFirstName.setText(employee.getFirstName());
-        txtLastName.setText(employee.getLastName());
-        txtEmail.setText(employee.getEmail());
-        txtPhone.setText(employee.getPhone());
-        txtPosition.setText(employee.getRole());
+        fill.getRowData(EmployeeTbl,lblID,txtFirstName,txtLastName,txtEmail,txtPhone,txtPosition);
     }
 
-    public void SaveChanges() {
-
+    public void close() {
+        fill.close(lblID);
     }
 }
 

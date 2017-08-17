@@ -9,8 +9,15 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import sun.awt.image.ToolkitImage;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -19,11 +26,12 @@ import javafx.stage.StageStyle;
 public class EmpIMS extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        
+
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
         stage.initStyle(StageStyle.UNDECORATED);
+        stage.getIcons().add(new Image("/empims/images/Logo.png"));
         stage.setScene(scene);
         stage.show();
     }

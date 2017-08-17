@@ -21,7 +21,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+import javax.swing.text.html.ImageView;
 
 /**
  * @author Bikin Maharjan
@@ -47,24 +52,31 @@ public class FXMLDocumentController implements Initializable {
     private void handlelogInAction() throws IOException, SQLException {
         if (isValidCredentials()) {
             Stage loginStage = (Stage) btnLogin.getScene().getWindow();
-            /*if (admin = true) {
+            if (admin == true) {
                 System.out.println("Admin Log In...");
 
                 FXMLLoader adminLoader = new FXMLLoader(getClass().getResource("AdminUI.fxml"));
-                Parent root = (Parent) adminLoader.load();
+                Parent root = adminLoader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.getIcons().add(new Image("/empims/images/Logo.png"));
+                stage.resizableProperty().setValue(false);
                 stage.show();
                 loginStage.hide();
-            }*/
-            System.out.println("Employee Log In...");
+            } else {
+                System.out.println("Employee Log In...");
 
-            FXMLLoader employeeLoader = new FXMLLoader(getClass().getResource("EmployeeUI.fxml"));
-            Parent root = (Parent) employeeLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-            loginStage.hide();
+                FXMLLoader employeeLoader = new FXMLLoader(getClass().getResource("EmployeeUI.fxml"));
+                Parent root = employeeLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.getIcons().add(new Image("/empims/images/Logo.png"));
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.resizableProperty().setValue(false);
+                stage.show();
+                loginStage.hide();
+            }
         } else {
             txtUser.clear();
             txtPassword.clear();
@@ -77,7 +89,7 @@ public class FXMLDocumentController implements Initializable {
         dc = new DbConnection();
 
         Connection conn = dc.Connect();
-        conn.setAutoCommit(false);
+        //conn.setAutoCommit(false);
 
         Statement stmt = conn.createStatement();
         Statement stmt2 = conn.createStatement();
@@ -89,9 +101,14 @@ public class FXMLDocumentController implements Initializable {
 
         while (rs.next()) {
             ResultSet rs2 = stmt2.executeQuery("SELECT * from sql12175092.Employee where ID = " + "'" + ID + "'");
-            while (rs2.next()) {
-                if ((rs2.getInt("Role") == 1) || (rs2.getInt("Role") == 2)) admin = true;
-            }
+            rs2.next();
+
+            //while (rs2.next()) {
+            System.out.println(rs2.getInt("Role"));
+                if ((rs2.getInt("Role") == 1) || (rs2.getInt("Role") == 2)) {
+                    admin = true;
+                }
+            //}
             let_in = true;
         }
         rs.close();
@@ -102,7 +119,6 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
 
 }

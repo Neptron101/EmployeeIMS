@@ -1,15 +1,36 @@
 package empims;
 
+import com.sun.org.apache.regexp.internal.RE;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 
-/**
- * Created by Sarah Fromming on 11/08/2017.
- */
-public class AdminUIController {
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class AdminUIController implements Initializable {
+
+    @FXML
+    private MenuItem close;
+
+    @FXML
+    private MenuItem add;
+
+    @FXML
+    private TextField txtSearch;
 
     @FXML
     private TableView<Employee> EmployeeTbl;
+
+    @FXML
+    private TableColumn<Employee, Integer> idCol;
 
     @FXML
     private TableColumn<Employee, String> firstNameCol;
@@ -18,7 +39,10 @@ public class AdminUIController {
     private TableColumn<Employee, String> lastNameCol;
 
     @FXML
-    private TableColumn<Employee, Integer> idCol;
+    private Label lblReady;
+
+    @FXML
+    private Label lblID;
 
     @FXML
     private TextField txtFirstName;
@@ -36,18 +60,125 @@ public class AdminUIController {
     private TextField txtPosition;
 
     @FXML
-    private TextField txtSearch;
+    private ChoiceBox choiceBox;
 
     @FXML
-    private Label lblID;
+    private HBox hBoxPos;
+
+    @FXML
+    private HBox hBoxSwap;
+
+    @FXML
+    private Button btnSave;
+
+    @FXML
+    private Button btnCancel;
+
+    @FXML
+    private MenuItem delete;
+
+    @FXML
+    private MenuItem modify;
+
+    private Methods fill;
+    private DbConnection db;
+    private ObservableList roles;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+        fill = new Methods();
+        fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
+    }
 
     public void getRowData() {
+        fill.getRowData(EmployeeTbl, lblID, txtFirstName, txtLastName, txtEmail, txtPhone, txtPosition);
+        delete.setDisable(false);
+        modify.setDisable(false);
+    }
+
+    public void close() {
+        fill.close(lblID);
+    }
+
+
+    public void addNew() {
+        fill.swap(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone);
+        EmployeeTbl.setDisable(true);
+        Integer last = EmployeeTbl.getItems().size();
+        Employee employee = EmployeeTbl.getItems().get(last - 1);
+        lblID.setText(String.valueOf(employee.getId() + 1));
+        txtFirstName.setText("");
+        txtLastName.setText("");
+        txtEmail.setText("");
+        txtPhone.setText("");
+
+        db = new DbConnection();
+        try {
+            Connection conn = db.Connect();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles");
+            roles = FXCollections.observableArrayList();
+            while (rs.next()) {
+                //get string from db,whichever way
+                roles.add(rs.getString("Role"));
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+
+        choiceBox.setItems(FXCollections.observableArrayList(roles));
+    }
+
+    public void save() {
+        try {
+            Connection conn = db.Connect();
+            ResultSet rs2 = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Employee");
+            ResultSet rs3 = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles WHERE Role = '" + choiceBox.getSelectionModel().getSelectedItem().toString() + "'");
+            roles = FXCollections.observableArrayList();
+            if (rs2.next()) {
+                String query = "INSERT INTO sql12175092.Employee (FirstName, LastName, Email, Phone, Role) VALUES (?, ?, ?, ?, ?)";
+                PreparedStatement preStmt = conn.prepareStatement(query);
+                preStmt.setString(1, txtFirstName.getText());
+                preStmt.setString(2, txtLastName.getText());
+                preStmt.setString(3, txtEmail.getText());
+                preStmt.setString(4, txtPhone.getText());
+                String role = rs2.getString("Role");
+                if (rs3.next()) {
+                    Integer roleID = rs3.getInt("ID");
+                    preStmt.setInt(5, roleID);
+                }
+                preStmt.execute();
+                rs2.close();
+                rs3.close();
+                conn.close();
+            }
+        } catch (
+                SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
+        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
+    }
+
+    public void cancel() {
+        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
+        delete.setDisable(true);
+    }
+
+
+    public void modify() {
+        fill.swap(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone);
+    }
+
+    public void delete() {
         Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
-        lblID.setText(String.valueOf(employee.getId()));
-        txtFirstName.setText(employee.getFirstName());
-        txtLastName.setText(employee.getLastName());
-        txtEmail.setText(employee.getEmail());
-        txtPhone.setText(employee.getPhone());
-        txtPosition.setText(employee.getRole());
+
+        System.out.println(employee.getId());
+        fill.delete(employee.getId());
+        System.out.println("Successful deleted");
+
+        fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
     }
 }
+
