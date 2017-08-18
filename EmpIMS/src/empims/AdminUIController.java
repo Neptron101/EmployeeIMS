@@ -75,6 +75,9 @@ public class AdminUIController implements Initializable {
     private Button btnCancel;
 
     @FXML
+    private Button btnUpdate;
+
+    @FXML
     private MenuItem delete;
 
     @FXML
@@ -135,7 +138,6 @@ public class AdminUIController implements Initializable {
             Connection conn = db.Connect();
             ResultSet rs2 = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Employee");
             ResultSet rs3 = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles WHERE Role = '" + choiceBox.getSelectionModel().getSelectedItem().toString() + "'");
-            roles = FXCollections.observableArrayList();
             if (rs2.next()) {
                 String query = "INSERT INTO sql12175092.Employee (FirstName, LastName, Email, Phone, Role) VALUES (?, ?, ?, ?, ?)";
                 PreparedStatement preStmt = conn.prepareStatement(query);
@@ -143,7 +145,6 @@ public class AdminUIController implements Initializable {
                 preStmt.setString(2, txtLastName.getText());
                 preStmt.setString(3, txtEmail.getText());
                 preStmt.setString(4, txtPhone.getText());
-                String role = rs2.getString("Role");
                 if (rs3.next()) {
                     Integer roleID = rs3.getInt("ID");
                     preStmt.setInt(5, roleID);
@@ -169,15 +170,35 @@ public class AdminUIController implements Initializable {
 
     public void modify() {
         fill.swap(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone);
+        btnUpdate.setVisible(true);
+        btnSave.setVisible(false);
+        db = new DbConnection();
+        try {
+            Connection conn = db.Connect();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles");
+            roles = FXCollections.observableArrayList();
+            while (rs.next()) {
+                //get string from db,whichever way
+                roles.add(rs.getString("Role"));
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+
+        choiceBox.setItems(FXCollections.observableArrayList(roles));
     }
 
+    public void update() throws SQLException {
+        Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
+
+        fill.update(employee.getId(),txtFirstName,txtLastName,txtEmail,txtPhone,choiceBox,EmployeeTbl);
+        fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
+    }
     public void delete() {
         Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
 
-        System.out.println(employee.getId());
-        fill.delete(employee.getId());
-        System.out.println("Successful deleted");
-
+        fill.delete(employee.getId(),lblID,txtFirstName,txtLastName,txtEmail,txtPhone,txtPosition,EmployeeTbl);
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
     }
 }

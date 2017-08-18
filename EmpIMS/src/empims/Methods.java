@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import javax.xml.soap.Text;
 import java.sql.*;
+import java.util.Optional;
 
 /**
  * Created by Sarah Fromming on 16/08/2017.
@@ -124,7 +125,7 @@ public class Methods {
         phone.setEditable(false);
     }
 
-    public void swap(TableView table, TextField pos, HBox posi, ChoiceBox cb, HBox swap, Button cancel, Button save, TextField first, TextField last, TextField email, TextField phone){
+    public void swap(TableView table, TextField pos, HBox posi, ChoiceBox cb, HBox swap, Button cancel, Button save, TextField first, TextField last, TextField email, TextField phone) {
         first.setEditable(true);
         last.setEditable(true);
         email.setEditable(true);
@@ -143,19 +144,61 @@ public class Methods {
         pos.setVisible(false);
     }
 
-    public void delete(int id) {
-        String sql = "DELETE FROM Employee WHERE ID = ?";
+    public void delete(int id, Label lbl, TextField first, TextField last, TextField email, TextField phone, TextField pos, TableView table) {
+        Employee employee = (Employee) table.getSelectionModel().getSelectedItem();
+        Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+        alert2.setTitle("Confirmation");
+        alert2.setHeaderText("Please confirm the deletion of " + employee.getFirstName() + " " + employee.getLastName());
+        alert2.setContentText("Are you sure you want to delete this employee?");
 
-        try (Connection conn = dc.Connect();
-        PreparedStatement pstmt = conn.prepareStatement(sql))
-        {
-            pstmt.setInt(1, id);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+        Optional<ButtonType> result = alert2.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            String sql = "DELETE FROM Employee WHERE ID = ?";
+
+            try (Connection conn = dc.Connect();
+                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setInt(1, id);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Deletion Successful");
+            alert.setContentText(employee.getFirstName() + " " + employee.getLastName() + " has been successfully deleted.");
+            alert.showAndWait();
+
+            lbl.setText("");
+            first.setText("");
+            last.setText("");
+            email.setText("");
+            phone.setText("");
+            pos.setText("");
+        } else {
+
         }
     }
 
+    public void update(int id, TextField first, TextField last, TextField email, TextField phone, ChoiceBox pos, TableView table) throws SQLException {
+        String sql = "UPDATE Employee SET FirstName = ?, LastName = ?, Email = ?, Phone = ?, Role = ? WHERE ID = ?";
+        Connection conn = dc.Connect();
+        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles WHERE Role = '" + pos.getSelectionModel().getSelectedItem().toString() + "'");
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, first.getText());
+        pstmt.setString(2, last.getText());
+        pstmt.setString(3, email.getText());
+        pstmt.setString(4, phone.getText());
+        if (rs.next()) {
+            Integer roleID = rs.getInt("ID");
+            pstmt.setInt(5, roleID);
+        }
+        pstmt.setInt(6,id);
+        pstmt.executeUpdate();
+        rs.close();
+        conn.close();
+    }
 
     public void addNew() {
 
