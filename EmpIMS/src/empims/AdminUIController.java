@@ -1,18 +1,24 @@
 package empims;
 
-import com.sun.org.apache.regexp.internal.RE;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 
+import javax.swing.text.MaskFormatter;
+import java.awt.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 
 public class AdminUIController implements Initializable {
@@ -104,7 +110,6 @@ public class AdminUIController implements Initializable {
         fill.close(lblID);
     }
 
-
     public void addNew() {
         fill.swap(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone);
         EmployeeTbl.setDisable(true);
@@ -153,22 +158,28 @@ public class AdminUIController implements Initializable {
                 rs2.close();
                 rs3.close();
                 conn.close();
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("New Employee created");
+                alert.setHeaderText(null);
+                alert.setContentText("The new record for " + txtFirstName.getText() + " " + txtLastName.getText() + " has been successfully created. The employee ID is: " + lblID.getText());
+                alert.showAndWait();
             }
         } catch (
                 SQLException ex) {
             System.err.println("Error" + ex);
         }
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
-        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
+        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, btnUpdate, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
     }
 
     public void cancel() {
-        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
+        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, btnUpdate, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
         delete.setDisable(true);
     }
 
-
     public void modify() {
+        String position = txtPosition.getText();
         fill.swap(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone);
         btnUpdate.setVisible(true);
         btnSave.setVisible(false);
@@ -187,14 +198,24 @@ public class AdminUIController implements Initializable {
         }
 
         choiceBox.setItems(FXCollections.observableArrayList(roles));
+        choiceBox.getSelectionModel().select(position);
     }
 
     public void update() throws SQLException {
         Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
 
-        fill.update(employee.getId(),txtFirstName,txtLastName,txtEmail,txtPhone,choiceBox,EmployeeTbl);
+        fill.update(employee.getId(),txtFirstName,txtLastName,txtEmail,txtPhone,choiceBox);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Employee information successfully updated.");
+        alert.showAndWait();
+
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
+        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, btnUpdate, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
     }
+
     public void delete() {
         Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
 

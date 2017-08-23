@@ -1,5 +1,6 @@
 package empims;
 
+import javafx.beans.binding.Bindings;
 import javafx.collections.*;
 import javafx.collections.transformation.*;
 import javafx.scene.control.*;
@@ -7,7 +8,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import javax.xml.soap.Text;
+import javax.naming.Binding;
 import java.sql.*;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ import java.util.Optional;
  */
 public class Methods {
     public ObservableList<Employee> EmpData;
+
     public DbConnection dc;
 
     public ObservableList<Employee> getEmpData() {
@@ -52,9 +54,14 @@ public class Methods {
                     return true;
                 } else if (Employee.getLastName().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (Employee.getId().equals(lowerCaseFilter)) {
+                } else if (Employee.getId().toString().contains(lowerCaseFilter)) {
                     return true;
                 }
+                Label text = new Label();
+                text.setWrapText(true);
+                text.setText("The employee you searched for could not be found. Please check the information you entered and try again.");
+                //"The employee you searched for could not be found. Please check the information you entered and try again."
+                table.setPlaceholder(text);
                 return false;
             });
         });
@@ -96,7 +103,7 @@ public class Methods {
         app.close();
     }
 
-    public void end(TableView table, TextField pos, HBox posi, ChoiceBox cb, HBox swap, Button cancel, Button save, TextField first, TextField last, TextField email, TextField phone, Label lbl) {
+    public void end(TableView table, TextField pos, HBox posi, ChoiceBox cb, HBox swap, Button cancel, Button save, Button update, TextField first, TextField last, TextField email, TextField phone, Label lbl) {
         table.setDisable(false);
 
         pos.setLayoutX(252);
@@ -111,6 +118,8 @@ public class Methods {
         cb.setVisible(false);
         cancel.setVisible(false);
         save.setVisible(false);
+        update.setVisible(false);
+
 
         lbl.setText("");
         first.setText("");
@@ -179,7 +188,7 @@ public class Methods {
         }
     }
 
-    public void update(int id, TextField first, TextField last, TextField email, TextField phone, ChoiceBox pos, TableView table) throws SQLException {
+    public void update(int id, TextField first, TextField last, TextField email, TextField phone, ChoiceBox pos) throws SQLException {
         String sql = "UPDATE Employee SET FirstName = ?, LastName = ?, Email = ?, Phone = ?, Role = ? WHERE ID = ?";
         Connection conn = dc.Connect();
         ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles WHERE Role = '" + pos.getSelectionModel().getSelectedItem().toString() + "'");
@@ -194,13 +203,9 @@ public class Methods {
             Integer roleID = rs.getInt("ID");
             pstmt.setInt(5, roleID);
         }
-        pstmt.setInt(6,id);
+        pstmt.setInt(6, id);
         pstmt.executeUpdate();
         rs.close();
         conn.close();
-    }
-
-    public void addNew() {
-
     }
 }
