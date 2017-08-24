@@ -1,13 +1,17 @@
 package empims;
 
-import com.sun.org.apache.regexp.internal.RE;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,6 +31,9 @@ public class AdminUIController implements Initializable {
     private TextField txtSearch;
 
     @FXML
+    private TextField txtSearchP;
+
+    @FXML
     private TableView<Employee> EmployeeTbl;
 
     @FXML
@@ -37,6 +44,16 @@ public class AdminUIController implements Initializable {
 
     @FXML
     private TableColumn<Employee, String> lastNameCol;
+
+    @FXML
+    private TableView<Project> ProjectTbl;
+
+    @FXML
+    private  TableColumn<Project, Integer> projectIdCol;
+
+    @FXML
+    private TableColumn<Project, String> projectTitleCol;
+
 
     @FXML
     private Label lblReady;
@@ -80,15 +97,33 @@ public class AdminUIController implements Initializable {
     @FXML
     private MenuItem modify;
 
+
     private Methods fill;
     private DbConnection db;
     private ObservableList roles;
+
+
+    //TO pass to assign Stage
+    private Integer projectId;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         fill = new Methods();
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
+        fill.initializeP(projectIdCol,projectTitleCol, ProjectTbl, txtSearchP);
+        ProjectTbl.getSelectionModel().setSelectionMode(
+                SelectionMode.MULTIPLE
+        );
+
+    }
+
+    public Integer projectId(){
+        Project project= ProjectTbl.getSelectionModel().getSelectedItem();
+        Integer projectId = project.getProjectId();
+        return projectId;
+
     }
 
     public void getRowData() {
@@ -179,6 +214,39 @@ public class AdminUIController implements Initializable {
         System.out.println("Successful deleted");
 
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
+    }
+
+    @FXML
+    public void handleAssignBtnAction() throws IOException{
+        System.out.println("Assign Button Clicked");
+
+        Project project= ProjectTbl.getSelectionModel().getSelectedItem();
+        projectId = project.getProjectId();
+
+        System.out.println("Project ID sent = " + projectId);
+
+
+
+        FXMLLoader assignLoader = new FXMLLoader(getClass().getResource("Assign.fxml"));
+
+
+        Parent root =  assignLoader.load();
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Assign Employee to the Project");
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
+
+    public Integer getProjectId(){
+        System.out.println("TEST" + projectId);
+        return projectId;
+
+
     }
 }
 

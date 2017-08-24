@@ -15,6 +15,8 @@ import java.sql.*;
  */
 public class Methods {
     public ObservableList<Employee> EmpData;
+    public ObservableList<Project> ProjectData;
+
     public DbConnection dc;
 
     public ObservableList<Employee> getEmpData() {
@@ -35,6 +37,28 @@ public class Methods {
             System.err.println("Error" + ex);
         }
         return EmpData;
+    }
+
+    public ObservableList<Project> getProjectData(){
+        dc = new DbConnection();
+        try{
+            Connection connection = dc.Connect();
+            ProjectData = FXCollections.observableArrayList();
+
+            ResultSet resultSet = connection.createStatement().executeQuery("SELECT Projects.ID, Projects.Title FROM Projects;");
+
+            while(resultSet.next()){
+                ProjectData.add(new Project(resultSet.getInt("ID"), resultSet.getString("Title")));
+
+            }
+            resultSet.close();
+            connection.close();
+        }
+        catch (SQLException e){
+            System.out.println("Error" + e);
+        }
+        return ProjectData;
+
     }
 
     public void filterData(TextField search, TableView table) {
@@ -65,6 +89,34 @@ public class Methods {
         table.setItems(sortedData);
     }
 
+    public void filterDataP(TextField searchP, TableView tableP){
+        FilteredList<Project> projectFilteredList = new FilteredList<>(ProjectData, project -> true);
+        searchP.textProperty().addListener((observable, oldValue, newValue) -> {
+            projectFilteredList.setPredicate(Project ->{
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (Project.getProjectId().equals(lowerCaseFilter)){
+                    return true;
+                }
+                else if (Project.getProjectTitle().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+                return false;
+            });
+
+        });
+
+        SortedList<Project> sortedData = new SortedList<Project>(projectFilteredList);
+        sortedData.comparatorProperty().bind(tableP.comparatorProperty());
+        tableP.setItems(sortedData);
+
+    }
+
+
     public void initialize(TableColumn id, TableColumn first, TableColumn last, TableView table, TextField search) {
 
         ObservableList<Employee> EmpData = getEmpData();
@@ -79,6 +131,19 @@ public class Methods {
         filterData(search, table);
     }
 
+    public void initializeP(TableColumn projectId, TableColumn projectTitle, TableView projectTable, TextField search){
+
+        ObservableList<Project> ProjectData = getProjectData();
+
+        projectId.setCellValueFactory(new PropertyValueFactory<>("projectId"));
+        projectTitle.setCellValueFactory(new PropertyValueFactory<>("projectTitle"));
+
+        projectTable.setItems(null);
+        projectTable.setItems(ProjectData);
+
+        filterDataP(search, projectTable);
+    }
+
     public void getRowData(TableView table, Label lbl, TextField first, TextField last, TextField email, TextField phone, TextField pos) {
         Employee employee = (Employee) table.getSelectionModel().getSelectedItem();
         lbl.setText(String.valueOf(employee.getId()));
@@ -89,6 +154,8 @@ public class Methods {
         pos.setText(employee.getRole());
 
     }
+
+
 
     public void close(Label lbl) {
         Stage app = (Stage) lbl.getScene().getWindow();
@@ -156,6 +223,27 @@ public class Methods {
         }
     }
 
+    public void assign (int projectId, int employeeId) throws SQLException {
+        String sql = "INSERT INTO Assignment (EmployeeID, ProjectId) VALUES (?,?);";
+        System.out.println("P = " + projectId + "E = " +employeeId);
+        System.out.println("1");
+        dc = new DbConnection();
+        Connection connection =dc.Connect();
+        System.out.println("2");
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1, employeeId);
+            preparedStatement.setInt(2, projectId);
+            System.out.println(sql);
+            preparedStatement.executeUpdate();
+
+
+
+
+        System.out.println("Assigned");
+
+
+    }
 
     public void addNew() {
 
