@@ -2,13 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f873b050-30f4-4fc2-b34a-d42f08006a43" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EmpIMS/empims/AdminUIController.class" afterPath="$PROJECT_DIR$/out/production/EmpIMS/empims/AdminUIController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EmpIMS/empims/Methods.class" afterPath="$PROJECT_DIR$/out/production/EmpIMS/empims/Methods.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/controlsfx_8_40_13.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_43_bin.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_database_1_8_0_jar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EmpIMS/empims/AssignController.class" afterPath="$PROJECT_DIR$/out/production/EmpIMS/empims/AssignController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EmpIMS/empims/Employee.class" afterPath="$PROJECT_DIR$/out/production/EmpIMS/empims/Employee.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EmpIMS/empims/FXMLDocumentController.class" afterPath="$PROJECT_DIR$/out/production/EmpIMS/empims/FXMLDocumentController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EmpIMS/empims/Login.class" afterPath="$PROJECT_DIR$/out/production/EmpIMS/empims/Login.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EmpIMS/empims/LoginController.class" afterPath="$PROJECT_DIR$/out/production/EmpIMS/empims/LoginController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EmpIMS/empims/Project.class" afterPath="$PROJECT_DIR$/out/production/EmpIMS/empims/Project.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/AdminUI.fxml" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/AdminUI.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/Methods.java" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/Methods.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/EmpIMS/empims/AdminUI.fxml" afterPath="$PROJECT_DIR$/out/production/EmpIMS/empims/AdminUI.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/EmpIMS.iml" afterPath="$PROJECT_DIR$/EmpIMS/EmpIMS.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/Employee.java" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/Employee.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/Login.java" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/Login.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/Project.java" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/Project.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,18 +30,19 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminUIController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdminUIController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="246" column="25" lean-forward="true" selection-start-line="246" selection-start-column="25" selection-end-line="246" selection-end-column="25" />
+            <state relative-caret-position="135">
+              <caret line="224" column="0" lean-forward="false" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
               <folding>
-                <marker date="1503490238628" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
-                <marker date="1503490238628" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
-                <marker date="1503490238628" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
-                <marker date="1503490238628" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
+                <marker date="1503535659782" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
+                <marker date="1503535659782" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
+                <marker date="1503535659782" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
+                <marker date="1503535659782" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
               </folding>
             </state>
           </provider>
@@ -41,24 +51,33 @@
       <file leaf-file-name="Methods.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Methods.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="222" column="9" lean-forward="true" selection-start-line="222" selection-start-column="9" selection-end-line="222" selection-end-column="9" />
+            <state relative-caret-position="3543">
+              <caret line="222" column="9" lean-forward="false" selection-start-line="222" selection-start-column="9" selection-end-line="222" selection-end-column="9" />
               <folding>
-                <element signature="e#4063#4072#0" expanded="true" />
-                <marker date="1503535171265" expanded="true" signature="809:968" ph="SELECT Emplo... Employee" />
-                <marker date="1503535171265" expanded="true" signature="1714:1762" ph="SELECT Proje... Projects" />
-                <marker date="1503535171265" expanded="true" signature="7363:7396" ph="DELETE FROM " />
-                <marker date="1503535171265" expanded="true" signature="7784:7843" ph="INSERT INTO Assignment... " />
+                <marker date="1503535659790" expanded="true" signature="809:968" ph="SELECT Emplo... Employee" />
+                <marker date="1503535659790" expanded="true" signature="1714:1762" ph="SELECT Proje... Projects" />
+                <marker date="1503535659790" expanded="true" signature="7363:7396" ph="DELETE FROM " />
+                <marker date="1503535659790" expanded="true" signature="7784:7843" ph="INSERT INTO Assignment... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Main.java">
+      <file leaf-file-name="Employee.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Employee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+            <state relative-caret-position="102">
+              <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DbConnection.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/DbConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="237">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -67,22 +86,64 @@
       <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+            <state relative-caret-position="101">
+              <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
               <folding>
-                <marker date="1502932218975" expanded="true" signature="3050:3123" ph="SELECT * FRO... Login" />
-                <marker date="1502932218975" expanded="true" signature="3755:3838" ph="SELECT * FRO... Employee" />
+                <marker date="1503536036283" expanded="true" signature="3052:3125" ph="SELECT * FRO... Login" />
+                <marker date="1503536036283" expanded="true" signature="3757:3840" ph="SELECT * FRO... Employee" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AssignController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AssignController.java">
+      <file leaf-file-name="FXMLLoader.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+            <state relative-caret-position="127">
+              <caret line="1773" column="0" lean-forward="false" selection-start-line="1773" selection-start-column="0" selection-end-line="1773" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/javafx-src.zip!/javafx/stage/Window.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="101">
+              <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DoublePropertyBase.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/javafx-src.zip!/javafx/beans/property/DoublePropertyBase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Project.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Project.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -122,12 +183,15 @@
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/SendMail.fxml" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/Assign.fxml" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/test.fxml" />
-        <option value="$PROJECT_DIR$/EmpIMS/src/empims/Project.java" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/AdminUI.fxml" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/Methods.java" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/Main.java" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/AssignController.java" />
+        <option value="$PROJECT_DIR$/EmpIMS/src/empims/Employee.java" />
+        <option value="$PROJECT_DIR$/EmpIMS/src/empims/Login.java" />
+        <option value="$PROJECT_DIR$/EmpIMS/src/empims/Project.java" />
+        <option value="$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java" />
       </list>
     </option>
   </component>
@@ -137,10 +201,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="676" />
-    <option name="width" value="697" />
-    <option name="height" value="735" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -158,36 +223,52 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
-          <expand>
-            <path>
-              <item name="EmployeeIMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EmpIMS" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EmployeeIMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EmpIMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EmployeeIMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EmpIMS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="empims" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EmployeeIMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-          </expand>
-          <select />
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EmployeeIMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EmployeeIMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EmpIMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EmployeeIMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="EmpIMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="empims" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -197,10 +278,11 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../controlsfx-8.40.13.jar!/" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-java-5.1.43/mysql-connector-java-5.1.43/mysql-connector-java-5.1.43-bin.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.19472362" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -221,117 +303,12 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="empims.Main" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="EmpIMS" />
-      <envs />
-    </configuration>
-    <configuration name="Unnamed" type="AntRunConfiguration" factoryName="Ant Target" />
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="empims.EmpIMS" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="launchBrowser" value="true" />
-      <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
+      <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="" />
@@ -389,6 +366,29 @@
       <method />
     </configuration>
     <configuration default="true" type="AntRunConfiguration" factoryName="Ant Target">
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="empims.EmpIMS" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -537,6 +537,36 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <envs />
@@ -592,12 +622,54 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
       <method />
     </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
       <envs />
       <method />
     </configuration>
@@ -608,23 +680,28 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <working-directory />
-      <pass-parent-env>true</pass-parent-env>
-      <envs />
-      <ui />
-      <extra-mocha-options />
-      <test-kind>DIRECTORY</test-kind>
-      <test-directory />
-      <recursive>false</recursive>
-      <method />
-    </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
       <method />
     </configuration>
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <configuration default="false" name="Unnamed" type="AntRunConfiguration" factoryName="Ant Target">
+      <method />
+    </configuration>
+    <configuration default="false" name="Main" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="empims.Main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="EmpIMS" />
+      <envs />
       <method />
     </configuration>
     <list size="2">
@@ -648,55 +725,70 @@
       <workItem from="1503113882983" duration="26000" />
       <workItem from="1503114016471" duration="6551000" />
       <workItem from="1503470857255" duration="19000000" />
+      <workItem from="1503535683530" duration="1099000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31246000" />
+    <option name="totallyTimeSpent" value="32345000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3210084" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33781514" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33878887" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23645681" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496329" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2397882" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39831933" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496329" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java</url>
+          <line>129</line>
+          <properties />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java</url>
+          <line>122</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -704,52 +796,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/test.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="74" column="29" lean-forward="false" selection-start-line="64" selection-start-column="16" selection-end-line="74" selection-end-column="29" />
-          <folding>
-            <marker date="1502932218975" expanded="true" signature="3050:3123" ph="SELECT * FRO... Login" />
-            <marker date="1502932218975" expanded="true" signature="3755:3838" ph="SELECT * FRO... Employee" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Assign.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="272" lean-forward="false" selection-start-line="6" selection-start-column="272" selection-end-line="6" selection-end-column="272" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="51" column="57" lean-forward="false" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
-          <folding>
-            <marker date="1503490238628" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
-            <marker date="1503490238628" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
-            <marker date="1503490238628" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
-            <marker date="1503490238628" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Login.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -774,10 +820,10 @@
         <state relative-caret-position="578">
           <caret line="51" column="57" lean-forward="false" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
           <folding>
-            <marker date="1503490238628" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
-            <marker date="1503490238628" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
-            <marker date="1503490238628" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
-            <marker date="1503490238628" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
+            <marker date="1503535659782" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
+            <marker date="1503535659782" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
+            <marker date="1503535659782" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
+            <marker date="1503535659782" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
           </folding>
         </state>
       </provider>
@@ -787,11 +833,10 @@
         <state relative-caret-position="357">
           <caret line="29" column="44" lean-forward="false" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
           <folding>
-            <element signature="e#4063#4072#0" expanded="true" />
-            <marker date="1503535171265" expanded="true" signature="809:968" ph="SELECT Emplo... Employee" />
-            <marker date="1503535171265" expanded="true" signature="1714:1762" ph="SELECT Proje... Projects" />
-            <marker date="1503535171265" expanded="true" signature="7363:7396" ph="DELETE FROM " />
-            <marker date="1503535171265" expanded="true" signature="7784:7843" ph="INSERT INTO Assignment... " />
+            <marker date="1503535659790" expanded="true" signature="809:968" ph="SELECT Emplo... Employee" />
+            <marker date="1503535659790" expanded="true" signature="1714:1762" ph="SELECT Proje... Projects" />
+            <marker date="1503535659790" expanded="true" signature="7363:7396" ph="DELETE FROM " />
+            <marker date="1503535659790" expanded="true" signature="7784:7843" ph="INSERT INTO Assignment... " />
           </folding>
         </state>
       </provider>
@@ -802,12 +847,6 @@
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -816,9 +855,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -849,8 +886,8 @@
         <state relative-caret-position="918">
           <caret line="74" column="29" lean-forward="false" selection-start-line="64" selection-start-column="16" selection-end-line="74" selection-end-column="29" />
           <folding>
-            <marker date="1502932218975" expanded="true" signature="3050:3123" ph="SELECT * FRO... Login" />
-            <marker date="1502932218975" expanded="true" signature="3755:3838" ph="SELECT * FRO... Employee" />
+            <marker date="1503536036283" expanded="true" signature="3052:3125" ph="SELECT * FRO... Login" />
+            <marker date="1503536036283" expanded="true" signature="3757:3840" ph="SELECT * FRO... Employee" />
           </folding>
         </state>
       </provider>
@@ -890,11 +927,10 @@
         <state relative-caret-position="357">
           <caret line="29" column="44" lean-forward="false" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
           <folding>
-            <element signature="e#4063#4072#0" expanded="true" />
-            <marker date="1503535171265" expanded="true" signature="809:968" ph="SELECT Emplo... Employee" />
-            <marker date="1503535171265" expanded="true" signature="1714:1762" ph="SELECT Proje... Projects" />
-            <marker date="1503535171265" expanded="true" signature="7363:7396" ph="DELETE FROM " />
-            <marker date="1503535171265" expanded="true" signature="7784:7843" ph="INSERT INTO Assignment... " />
+            <marker date="1503535659790" expanded="true" signature="809:968" ph="SELECT Emplo... Employee" />
+            <marker date="1503535659790" expanded="true" signature="1714:1762" ph="SELECT Proje... Projects" />
+            <marker date="1503535659790" expanded="true" signature="7363:7396" ph="DELETE FROM " />
+            <marker date="1503535659790" expanded="true" signature="7784:7843" ph="INSERT INTO Assignment... " />
           </folding>
         </state>
       </provider>
@@ -905,12 +941,6 @@
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -919,9 +949,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -952,8 +980,8 @@
         <state relative-caret-position="918">
           <caret line="74" column="29" lean-forward="false" selection-start-line="64" selection-start-column="16" selection-end-line="74" selection-end-column="29" />
           <folding>
-            <marker date="1502932218975" expanded="true" signature="3050:3123" ph="SELECT * FRO... Login" />
-            <marker date="1502932218975" expanded="true" signature="3755:3838" ph="SELECT * FRO... Employee" />
+            <marker date="1503536036283" expanded="true" signature="3052:3125" ph="SELECT * FRO... Login" />
+            <marker date="1503536036283" expanded="true" signature="3757:3840" ph="SELECT * FRO... Employee" />
           </folding>
         </state>
       </provider>
@@ -974,10 +1002,10 @@
         <state relative-caret-position="578">
           <caret line="51" column="57" lean-forward="true" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
           <folding>
-            <marker date="1503490238628" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
-            <marker date="1503490238628" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
-            <marker date="1503490238628" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
-            <marker date="1503490238628" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
+            <marker date="1503535659782" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
+            <marker date="1503535659782" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
+            <marker date="1503535659782" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
+            <marker date="1503535659782" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
           </folding>
         </state>
       </provider>
@@ -1006,10 +1034,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1503490238628" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
-            <marker date="1503490238628" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
-            <marker date="1503490238628" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
-            <marker date="1503490238628" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
+            <marker date="1503535659782" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
+            <marker date="1503535659782" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
+            <marker date="1503535659782" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
+            <marker date="1503535659782" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
           </folding>
         </state>
       </provider>
@@ -1041,8 +1069,8 @@
         <state relative-caret-position="918">
           <caret line="74" column="29" lean-forward="true" selection-start-line="64" selection-start-column="16" selection-end-line="74" selection-end-column="29" />
           <folding>
-            <marker date="1502932218975" expanded="true" signature="3050:3123" ph="SELECT * FRO... Login" />
-            <marker date="1502932218975" expanded="true" signature="3755:3838" ph="SELECT * FRO... Employee" />
+            <marker date="1503536036283" expanded="true" signature="3052:3125" ph="SELECT * FRO... Login" />
+            <marker date="1503536036283" expanded="true" signature="3757:3840" ph="SELECT * FRO... Employee" />
           </folding>
         </state>
       </provider>
@@ -1106,14 +1134,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="13" column="12" lean-forward="false" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/test.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -1122,22 +1142,6 @@
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Project.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#475#476#0" expanded="true" />
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
-            <element signature="e#930#931#0" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1163,14 +1167,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/collections/ListChangeListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="303" column="16" lean-forward="false" selection-start-line="303" selection-start-column="16" selection-end-line="303" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/collections/ListChangeListener.java" />
     <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Assign.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -1178,14 +1175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Employee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1201,42 +1190,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
-          <folding>
-            <marker date="1502932218975" expanded="true" signature="3050:3123" ph="SELECT * FRO... Login" />
-            <marker date="1502932218975" expanded="true" signature="3755:3838" ph="SELECT * FRO... Employee" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Methods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="222" column="9" lean-forward="true" selection-start-line="222" selection-start-column="9" selection-end-line="222" selection-end-column="9" />
-          <folding>
-            <element signature="e#4063#4072#0" expanded="true" />
-            <marker date="1503535171265" expanded="true" signature="809:968" ph="SELECT Emplo... Employee" />
-            <marker date="1503535171265" expanded="true" signature="1714:1762" ph="SELECT Proje... Projects" />
-            <marker date="1503535171265" expanded="true" signature="7363:7396" ph="DELETE FROM " />
-            <marker date="1503535171265" expanded="true" signature="7784:7843" ph="INSERT INTO Assignment... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="45" column="1" lean-forward="true" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
+        <state relative-caret-position="459">
+          <caret line="45" column="1" lean-forward="false" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AssignController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="646">
           <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding />
         </state>
@@ -1244,14 +1208,96 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="246" column="25" lean-forward="true" selection-start-line="246" selection-start-column="25" selection-end-line="246" selection-end-column="25" />
+        <state relative-caret-position="135">
+          <caret line="224" column="0" lean-forward="false" selection-start-line="224" selection-start-column="0" selection-end-line="224" selection-end-column="0" />
           <folding>
-            <marker date="1503490238628" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
-            <marker date="1503490238628" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
-            <marker date="1503490238628" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
-            <marker date="1503490238628" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
+            <marker date="1503535659782" expanded="true" signature="3532:3563" ph="SELECT * FRO... Roles" />
+            <marker date="1503535659782" expanded="true" signature="4088:4122" ph="SELECT * FRO... Employee" />
+            <marker date="1503535659782" expanded="true" signature="4191:4304" ph="SELECT * FRO... Roles" />
+            <marker date="1503535659782" expanded="true" signature="4427:4524" ph="INSERT INTO sql12175092.Employee... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Employee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="6" lean-forward="false" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="6" lean-forward="false" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Methods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3543">
+          <caret line="222" column="9" lean-forward="false" selection-start-line="222" selection-start-column="9" selection-end-line="222" selection-end-column="9" />
+          <folding>
+            <marker date="1503535659790" expanded="true" signature="809:968" ph="SELECT Emplo... Employee" />
+            <marker date="1503535659790" expanded="true" signature="1714:1762" ph="SELECT Proje... Projects" />
+            <marker date="1503535659790" expanded="true" signature="7363:7396" ph="DELETE FROM " />
+            <marker date="1503535659790" expanded="true" signature="7784:7843" ph="INSERT INTO Assignment... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="1773" column="0" lean-forward="false" selection-start-line="1773" selection-start-column="0" selection-end-line="1773" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/javafx-src.zip!/javafx/beans/property/DoublePropertyBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_74/javafx-src.zip!/javafx/stage/Window.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding>
+            <marker date="1503536036283" expanded="true" signature="3052:3125" ph="SELECT * FRO... Login" />
+            <marker date="1503536036283" expanded="true" signature="3757:3840" ph="SELECT * FRO... Employee" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/DbConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1312,6 +1358,7 @@
             <option name="proportions">
               <list>
                 <option value="0.19472362" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1331,6 +1378,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>mysql-connector-java-5.1.43-bin</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

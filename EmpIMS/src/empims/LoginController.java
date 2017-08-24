@@ -122,7 +122,7 @@ public class LoginController implements Initializable{
         dC = new DbConnection();
         Connection conn = dC.Connect();
         System.out.println("Database Connected!");
-        conn.setAutoCommit(false);
+        //conn.setAutoCommit(false);
 
         String sql = "SELECT * FROM sql12175092.Login WHERE Password = '"+ PW + "' AND EmpID = "+ ID + ";";
         System.out.println(sql);

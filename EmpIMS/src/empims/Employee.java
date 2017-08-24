@@ -4,14 +4,14 @@ package empims;
  */
 
 import javafx.beans.property.*;
-import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.NotNull;
 
 public class Employee {
     private final IntegerProperty id = new SimpleIntegerProperty(this, "id");
     public IntegerProperty idProperty() {
         return id;
     }
-    @NotNull
+    //@NotNull
     public final Integer getId() {
         return idProperty().get();
     }
