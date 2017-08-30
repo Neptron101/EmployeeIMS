@@ -18,6 +18,8 @@ import java.util.Optional;
 public class Methods {
     public ObservableList<Employee> EmpData;
 
+    public ObservableList<Project> ProjectData;
+
     public DbConnection dc;
 
     public ObservableList<Employee> getEmpData() {
@@ -40,6 +42,28 @@ public class Methods {
         return EmpData;
     }
 
+	public ObservableList<Project> getProjectData(){
+        dc = new DbConnection();
+        try{
+            Connection connection = dc.Connect();
+            ProjectData = FXCollections.observableArrayList();
+
+            ResultSet resultSet = connection.createStatement().executeQuery("SELECT Projects.ID, Projects.Title FROM Projects;");
+
+            while(resultSet.next()){
+                ProjectData.add(new Project(resultSet.getInt("ID"), resultSet.getString("Title")));
+
+            }
+            resultSet.close();
+            connection.close();
+        }
+        catch (SQLException e){
+            System.out.println("Error" + e);
+        }
+        return ProjectData;
+
+    }
+	
     public void filterData(TextField search, TableView table) {
         FilteredList<Employee> filteredData = new FilteredList<>(EmpData, p -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -72,6 +96,33 @@ public class Methods {
 
         table.setItems(sortedData);
     }
+	
+	public void filterDataP(TextField searchP, TableView tableP){
+        FilteredList<Project> projectFilteredList = new FilteredList<>(ProjectData, project -> true);
+        searchP.textProperty().addListener((observable, oldValue, newValue) -> {
+            projectFilteredList.setPredicate(Project ->{
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (Project.getProjectId().equals(lowerCaseFilter)){
+                    return true;
+                }
+                else if (Project.getProjectTitle().toLowerCase().contains(lowerCaseFilter)){
+                    return true;
+                }
+                return false;
+            });
+
+        });
+
+        SortedList<Project> sortedData = new SortedList<Project>(projectFilteredList);
+        sortedData.comparatorProperty().bind(tableP.comparatorProperty());
+        tableP.setItems(sortedData);
+
+    }
 
     public void initialize(TableColumn id, TableColumn first, TableColumn last, TableView table, TextField search) {
 
@@ -85,6 +136,19 @@ public class Methods {
         table.setItems(EmpData);
 
         filterData(search, table);
+    }
+	
+	public void initializeP(TableColumn projectId, TableColumn projectTitle, TableView projectTable, TextField search){
+
+        ObservableList<Project> ProjectData = getProjectData();
+
+        projectId.setCellValueFactory(new PropertyValueFactory<>("projectId"));
+        projectTitle.setCellValueFactory(new PropertyValueFactory<>("projectTitle"));
+
+        projectTable.setItems(null);
+        projectTable.setItems(ProjectData);
+
+        filterDataP(search, projectTable);
     }
 
     public void getRowData(TableView table, Label lbl, TextField first, TextField last, TextField email, TextField phone, TextField pos) {
@@ -188,7 +252,7 @@ public class Methods {
         }
     }
 
-    public void update(int id, TextField first, TextField last, TextField email, TextField phone, ChoiceBox pos) throws SQLException {
+    public void update(Label label, TextField first, TextField last, TextField email, TextField phone, ChoiceBox pos) throws SQLException {
         String sql = "UPDATE Employee SET FirstName = ?, LastName = ?, Email = ?, Phone = ?, Role = ? WHERE ID = ?";
         Connection conn = dc.Connect();
         ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles WHERE Role = '" + pos.getSelectionModel().getSelectedItem().toString() + "'");
@@ -203,9 +267,31 @@ public class Methods {
             Integer roleID = rs.getInt("ID");
             pstmt.setInt(5, roleID);
         }
-        pstmt.setInt(6, id);
+        pstmt.setString(6, label.getText());
         pstmt.executeUpdate();
         rs.close();
         conn.close();
+    }
+	
+	public void assign (int projectId, int employeeId) throws SQLException {
+        String sql = "INSERT INTO Assignment (EmployeeID, ProjectId) VALUES (?,?);";
+        System.out.println("P = " + projectId + "E = " +employeeId);
+        System.out.println("1");
+        dc = new DbConnection();
+        Connection connection =dc.Connect();
+        System.out.println("2");
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1, employeeId);
+            preparedStatement.setInt(2, projectId);
+            System.out.println(sql);
+            preparedStatement.executeUpdate();
+
+
+
+
+        System.out.println("Assigned");
+
+
     }
 }

@@ -3,16 +3,22 @@ package empims;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 import javax.swing.text.MaskFormatter;
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,6 +39,9 @@ public class AdminUIController implements Initializable {
     private TextField txtSearch;
 
     @FXML
+    private TextField txtSearchP;
+
+    @FXML
     private TableView<Employee> EmployeeTbl;
 
     @FXML
@@ -43,6 +52,15 @@ public class AdminUIController implements Initializable {
 
     @FXML
     private TableColumn<Employee, String> lastNameCol;
+
+    @FXML
+    private TableView<Project> ProjectTbl;
+
+    @FXML
+    private TableColumn<Project, Integer> projectIdCol;
+
+    @FXML
+    private TableColumn<Project, String> projectTitleCol;
 
     @FXML
     private Label lblReady;
@@ -93,11 +111,25 @@ public class AdminUIController implements Initializable {
     private DbConnection db;
     private ObservableList roles;
 
+    //TO pass to assign Stage
+    public Integer projectId;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         fill = new Methods();
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
+        fill.initializeP(projectIdCol, projectTitleCol, ProjectTbl, txtSearchP);
+        ProjectTbl.getSelectionModel().setSelectionMode(
+                SelectionMode.MULTIPLE
+        );
+    }
+
+    public Integer projectId() {
+        Project project = ProjectTbl.getSelectionModel().getSelectedItem();
+        Integer projectId = project.getProjectId();
+        return projectId;
+
     }
 
     public void getRowData() {
@@ -113,9 +145,6 @@ public class AdminUIController implements Initializable {
     public void addNew() {
         fill.swap(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone);
         EmployeeTbl.setDisable(true);
-        Integer last = EmployeeTbl.getItems().size();
-        Employee employee = EmployeeTbl.getItems().get(last - 1);
-        lblID.setText(String.valueOf(employee.getId() + 1));
         txtFirstName.setText("");
         txtLastName.setText("");
         txtEmail.setText("");
@@ -124,9 +153,17 @@ public class AdminUIController implements Initializable {
         db = new DbConnection();
         try {
             Connection conn = db.Connect();
+            String sql = "INSERT INTO sql12175092.Employee VALUE ()";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.executeUpdate();
+            ResultSet rs2 = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Employee ORDER BY ID DESC LIMIT 1");
             // Execute query and store result in a resultset
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles");
             roles = FXCollections.observableArrayList();
+            if (rs2.next()) {
+                System.out.println("Successfully interserted");
+                lblID.setText(rs2.getString("ID"));
+            }
             while (rs.next()) {
                 //get string from db,whichever way
                 roles.add(rs.getString("Role"));
@@ -141,30 +178,17 @@ public class AdminUIController implements Initializable {
     public void save() {
         try {
             Connection conn = db.Connect();
-            ResultSet rs2 = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Employee");
-            ResultSet rs3 = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles WHERE Role = '" + choiceBox.getSelectionModel().getSelectedItem().toString() + "'");
-            if (rs2.next()) {
-                String query = "INSERT INTO sql12175092.Employee (FirstName, LastName, Email, Phone, Role) VALUES (?, ?, ?, ?, ?)";
-                PreparedStatement preStmt = conn.prepareStatement(query);
-                preStmt.setString(1, txtFirstName.getText());
-                preStmt.setString(2, txtLastName.getText());
-                preStmt.setString(3, txtEmail.getText());
-                preStmt.setString(4, txtPhone.getText());
-                if (rs3.next()) {
-                    Integer roleID = rs3.getInt("ID");
-                    preStmt.setInt(5, roleID);
-                }
-                preStmt.execute();
-                rs2.close();
-                rs3.close();
-                conn.close();
-
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("New Employee created");
-                alert.setHeaderText(null);
-                alert.setContentText("The new record for " + txtFirstName.getText() + " " + txtLastName.getText() + " has been successfully created. The employee ID is: " + lblID.getText());
-                alert.showAndWait();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles WHERE Role = '" + choiceBox.getSelectionModel().getSelectedItem().toString() + "'");
+            if (rs.next()) {
+                fill.update(lblID, txtFirstName, txtLastName, txtEmail, txtPhone, choiceBox);
             }
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("New Employee created");
+            alert.setHeaderText(null);
+            alert.setContentText("The new record for " + txtFirstName.getText() + " " + txtLastName.getText() + " has been successfully created. The employee ID is: " + lblID.getText());
+            alert.showAndWait();
+
         } catch (
                 SQLException ex) {
             System.err.println("Error" + ex);
@@ -202,9 +226,7 @@ public class AdminUIController implements Initializable {
     }
 
     public void update() throws SQLException {
-        Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
-
-        fill.update(employee.getId(),txtFirstName,txtLastName,txtEmail,txtPhone,choiceBox);
+        fill.update(lblID, txtFirstName, txtLastName, txtEmail, txtPhone, choiceBox);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -219,8 +241,41 @@ public class AdminUIController implements Initializable {
     public void delete() {
         Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
 
-        fill.delete(employee.getId(),lblID,txtFirstName,txtLastName,txtEmail,txtPhone,txtPosition,EmployeeTbl);
+        fill.delete(employee.getId(), lblID, txtFirstName, txtLastName, txtEmail, txtPhone, txtPosition, EmployeeTbl);
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
     }
+
+    @FXML
+    public void handleAssignBtnAction() throws IOException {
+        System.out.println("Assign Button Clicked");
+
+        Project project = ProjectTbl.getSelectionModel().getSelectedItem();
+        projectId = project.getProjectId();
+
+        System.out.println("Project ID sent = " + projectId);
+
+        FXMLLoader assignLoader = new FXMLLoader(getClass().getResource("Assign.fxml"));
+
+        Parent root = assignLoader.load();
+
+        AssignController controller = assignLoader.<AssignController>getController();
+        controller.initProID(projectId);
+
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Assign Employee to the Project");
+        stage.setScene(scene);
+        stage.show();
+
+
+    }
+
+    public Integer getProjectId() {
+        System.out.println("TEST" + projectId);
+        return projectId;
+    }
+
 }
 

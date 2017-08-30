@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="717.0" style="-fx-background-color: #124479;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="empims.AssignController">
+   <children>
+      <ImageView fitHeight="425.0" fitWidth="717.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/UI.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="searchTF" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="524.0" promptText="Enter the Employee Name" />
+      <Button fx:id="searchBtn" layoutX="556.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Search" />
+      <TableView fx:id="empTable" layoutX="5.0" layoutY="48.0" prefHeight="303.0" prefWidth="706.0">
+        <columns>
+            <TableColumn fx:id="selectCol" prefWidth="56.0" text="Select" />
+            <TableColumn fx:id="idCol" prefWidth="109.0" text="Employee ID" />
+            <TableColumn fx:id="firstNameCol" prefWidth="272.0" text="First Name" />
+            <TableColumn fx:id="lastNameCol" prefWidth="250.0" text="Last Name" />
+        </columns>
+      </TableView>
+      <Button fx:id="addToProject" layoutX="302.0" layoutY="363.0" mnemonicParsing="false" onAction="#handleAddAction" prefHeight="25.0" prefWidth="112.0" text="Add" />
+   </children>
+</AnchorPane>

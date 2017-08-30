@@ -9,5 +9,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="mysql-connector-java-5.1.17-bin" level="project" />
     <orderEntry type="library" exported="" name="javax.mail.jar" level="project" />
+    <orderEntry type="library" name="controlsfx-8.40.13" level="project" />
   </component>
 </module>
