@@ -97,6 +97,20 @@ public class AdminUIController implements Initializable {
     @FXML
     private MenuItem modify;
 
+    @FXML
+    private ListView employeeListView;
+
+    @FXML
+    private Label projectStatus;
+
+    @FXML
+    private Button assignBtn;
+
+    @FXML
+    private Button writeReportBtn;
+
+
+
 
     private Methods fill;
     private DbConnection db;
@@ -110,6 +124,7 @@ public class AdminUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
         fill = new Methods();
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
         fill.initializeP(projectIdCol,projectTitleCol, ProjectTbl, txtSearchP);
@@ -123,6 +138,12 @@ public class AdminUIController implements Initializable {
         Project project= ProjectTbl.getSelectionModel().getSelectedItem();
         Integer projectId = project.getProjectId();
         return projectId;
+
+    }
+
+    public void getProjectRowData() throws SQLException {
+        System.out.println("call");
+        fill.getProjectRowData(ProjectTbl, projectStatus, employeeListView);
 
     }
 
@@ -220,17 +241,23 @@ public class AdminUIController implements Initializable {
     public void handleAssignBtnAction() throws IOException{
         System.out.println("Assign Button Clicked");
 
+
         Project project= ProjectTbl.getSelectionModel().getSelectedItem();
         projectId = project.getProjectId();
 
         System.out.println("Project ID sent = " + projectId);
 
-
+        Project p = new Project();
+        p.setProId(projectId);
 
         FXMLLoader assignLoader = new FXMLLoader(getClass().getResource("Assign.fxml"));
 
 
         Parent root =  assignLoader.load();
+
+        //Pass project Id to another window
+        AssignController controller = assignLoader.<AssignController>getController();
+        controller.initProID(projectId);
 
         Stage stage = new Stage();
         Scene scene = new Scene(root);
@@ -238,6 +265,12 @@ public class AdminUIController implements Initializable {
         stage.setTitle("Assign Employee to the Project");
         stage.setScene(scene);
         stage.show();
+
+
+    }
+
+    @FXML
+    public void handleWriteReportBtnAction(){
 
 
     }

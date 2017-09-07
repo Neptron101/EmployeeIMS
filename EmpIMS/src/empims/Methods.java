@@ -155,6 +155,56 @@ public class Methods {
 
     }
 
+    public void getProjectRowData(TableView tableView, Label label, ListView listView) throws SQLException {
+        listView.getItems().clear();
+        Project project = (Project) tableView.getSelectionModel().getSelectedItem();
+        int id = project.getProjectId();
+        System.out.println("id=" + id);
+
+        Employee employee = new Employee();
+
+        Connection connection = dc.Connect();
+
+
+        //String sql = "SELECT * FROM Assignment WHERE ProjectId = " + id ;
+        String sql = "select assignment.*,employee.* from assignment, employee\n" +
+                "where assignment.EmployeeID = employee.ID\n" +
+                "and assignment.ProjectID = " + id;
+
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()){
+            int empId = resultSet.getInt("EmployeeID") ;
+            String fName = resultSet.getString("FirstName");
+            String lName = resultSet.getString("LastName");
+            System.out.println(empId);
+
+            /*
+            employee.setId(empId + 1 );
+            ObservableList <Employee> EmployeeData = getEmpData();
+            String fName = String.valueOf(EmployeeData.get(empId).getFirstName());
+            String lName = String.valueOf(EmployeeData.get(empId).getLastName());
+            */
+
+            String list = empId + ") " + fName + " " + lName;
+            listView.getItems().add(list);
+
+        }
+
+
+        if (listView.getItems() == null){
+            label.setText("No one is assigned to this Project yet.");
+
+        }
+
+
+
+    }
+
 
 
     public void close(Label lbl) {
@@ -244,6 +294,8 @@ public class Methods {
 
 
     }
+
+
 
     public void addNew() {
 

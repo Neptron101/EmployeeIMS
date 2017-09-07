@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
  * Created by Bikin Maharjan on 19/08/2017.
  */
 public class Project {
+    int proId;
     //
     private final IntegerProperty projectId = new SimpleIntegerProperty(this, "projectId");
     public IntegerProperty projectIdProperty() {
@@ -42,5 +43,13 @@ public class Project {
         setProjectTitle(projTitle);
     }
 
+    public void setProId(int i){
+        System.out.println("Set" + i);
+        proId = i;
+    }
+    public int getProId(){
+        System.out.println(proId);
+        return proId;
+    }
 
 }
