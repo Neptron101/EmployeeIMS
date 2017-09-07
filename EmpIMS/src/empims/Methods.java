@@ -48,10 +48,11 @@ public class Methods {
             Connection connection = dc.Connect();
             ProjectData = FXCollections.observableArrayList();
 
-            ResultSet resultSet = connection.createStatement().executeQuery("SELECT Projects.ID, Projects.Title FROM Projects;");
+            //ResultSet resultSet = connection.createStatement().executeQuery("SELECT Projects.ID, Projects.Title FROM Projects;");
+            ResultSet resultSet = connection.createStatement().executeQuery("SELECT * FROM Projects");
 
             while(resultSet.next()){
-                ProjectData.add(new Project(resultSet.getInt("ID"), resultSet.getString("Title")));
+                ProjectData.add(new Project(resultSet.getInt("ID"), resultSet.getString("Title"),resultSet.getString("Description")));
 
             }
             resultSet.close();
@@ -159,7 +160,13 @@ public class Methods {
         email.setText(employee.getEmail());
         phone.setText(employee.getPhone());
         pos.setText(employee.getRole());
+    }
 
+    public  void getRowDataP(TableView table, Label lbl, TextField title, TextArea desc) {
+	    Project project = (Project) table.getSelectionModel().getSelectedItem();
+	    lbl.setText(String.valueOf(project.getProjectId()));
+	    title.setText(project.getProjectTitle());
+	    desc.setText(project.getProjectDesc());
     }
 
     public void close(Label lbl) {
@@ -270,6 +277,19 @@ public class Methods {
         pstmt.setString(6, label.getText());
         pstmt.executeUpdate();
         rs.close();
+        conn.close();
+    }
+
+    public void updateP(Label label, TextField title, TextArea desc) throws SQLException {
+        String sql = "UPDATE Project SET Title = ?, Description = ? WHERE ID = ?";
+        Connection conn = dc.Connect();
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1,title.getText());
+        pstmt.setString(2, desc.getText());
+        pstmt.setString(3, label.getText());
+        pstmt.executeUpdate();
         conn.close();
     }
 	

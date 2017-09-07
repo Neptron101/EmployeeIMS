@@ -21,7 +21,6 @@ public class Project {
         projectIdProperty().set(projectId);
     }
 
-
     private final StringProperty projectTitle = new SimpleStringProperty(this, "projectTitle");
     public StringProperty projectTitleProperty() {
         return projectTitle;
@@ -33,13 +32,19 @@ public class Project {
         projectTitleProperty().set(projectTitle);
     }
 
+    private final StringProperty projectDesc = new SimpleStringProperty(this,"projectDesc");
+    public StringProperty projectDescProperty() { return projectDesc; }
+    public final String getProjectDesc() { return projectDescProperty().get(); }
+    public final void setProjectDesc(String projectDesc) { projectDescProperty().set(projectDesc);}
+
     public Project(){
 
     }
 
-    public Project(Integer projId, String projTitle){
+    public Project(Integer projId, String projTitle, String projDesc){
         setProjectId(projId);
         setProjectTitle(projTitle);
+        setProjectDesc(projDesc);
     }
 
 

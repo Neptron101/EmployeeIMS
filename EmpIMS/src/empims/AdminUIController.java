@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -57,16 +58,19 @@ public class AdminUIController implements Initializable {
     private TableView<Project> ProjectTbl;
 
     @FXML
-    private TableColumn<Project, Integer> projectIdCol;
+    private TableColumn<Project, Integer> idColP;
 
     @FXML
-    private TableColumn<Project, String> projectTitleCol;
+    private TableColumn<Project, String> titleCol;
 
     @FXML
     private Label lblReady;
 
     @FXML
     private Label lblID;
+
+    @FXML
+    private Label lblIDP;
 
     @FXML
     private TextField txtFirstName;
@@ -82,6 +86,12 @@ public class AdminUIController implements Initializable {
 
     @FXML
     private TextField txtPosition;
+
+    @FXML
+    private TextField txtTitle;
+
+    @FXML
+    private TextArea txtDesc;
 
     @FXML
     private ChoiceBox choiceBox;
@@ -119,7 +129,7 @@ public class AdminUIController implements Initializable {
         // TODO
         fill = new Methods();
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
-        fill.initializeP(projectIdCol, projectTitleCol, ProjectTbl, txtSearchP);
+        fill.initializeP(idColP, titleCol, ProjectTbl, txtSearchP);
         ProjectTbl.getSelectionModel().setSelectionMode(
                 SelectionMode.MULTIPLE
         );
@@ -136,6 +146,11 @@ public class AdminUIController implements Initializable {
         fill.getRowData(EmployeeTbl, lblID, txtFirstName, txtLastName, txtEmail, txtPhone, txtPosition);
         delete.setDisable(false);
         modify.setDisable(false);
+    }
+
+    public void getRowDataP() {
+        txtDesc.setWrapText(true);
+        fill.getRowDataP(ProjectTbl, lblIDP, txtTitle, txtDesc);
     }
 
     public void close() {
@@ -175,6 +190,29 @@ public class AdminUIController implements Initializable {
         choiceBox.setItems(FXCollections.observableArrayList(roles));
     }
 
+    public void addNewP() {
+        ProjectTbl.setDisable(true);
+        txtTitle.setText("");
+        txtDesc.setText("");
+
+        db = new DbConnection();
+        try {
+            Connection conn = db.Connect();
+            String sql = "INSERT INTO sql12175092.Projects VALUE ()";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.executeUpdate();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Projects ORDER BY ID DESC LIMIT 1");
+            // Execute query and store result in a resultset
+            roles = FXCollections.observableArrayList();
+            if (rs.next()) {
+                System.out.println("Successfully interserted");
+                lblIDP.setText(rs.getString("ID"));
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+    }
+
     public void save() {
         try {
             Connection conn = db.Connect();
@@ -197,9 +235,25 @@ public class AdminUIController implements Initializable {
         fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, btnUpdate, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
     }
 
+    public void saveP() throws SQLException {
+
+        fill.updateP(lblIDP, txtTitle, txtDesc);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("New Project created");
+        alert.setHeaderText(null);
+        alert.setContentText("The new record for " + txtTitle.getText() + " has been successfully created. The project ID is: " + lblIDP.getText());
+        alert.showAndWait();
+
+    }
+
     public void cancel() {
         fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, btnUpdate, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
         delete.setDisable(true);
+    }
+
+    public void cancelP() {
+
     }
 
     public void modify() {
@@ -236,6 +290,16 @@ public class AdminUIController implements Initializable {
 
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
         fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, btnUpdate, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
+    }
+
+    public void updateP() throws SQLException {
+        fill.updateP(lblIDP, txtTitle, txtDesc);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("New Project created");
+        alert.setHeaderText(null);
+        alert.setContentText("The new record for " + txtTitle.getText() + " has been successfully created. The project ID is: " + lblIDP.getText());
+        alert.showAndWait();
     }
 
     public void delete() {

@@ -14,9 +14,13 @@ public class DbConnection {
     public Connection Connect() {
         try {
             //Your database url string,ensure it is correct
-            String url = "jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12175092?zeroDateTimeBehavior=convertToNull";
+            /*String url = "jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12175092?zeroDateTimeBehavior=convertToNull";
             String user = "sql12175092";
-            String password = "IKiL6BaUyu";
+            String password = "IKiL6BaUyu";*/
+
+            String url = "jdbc:mysql://localhost:3306/sql12175092";
+            String user = "root";
+            String password = "icq123SS";
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -29,20 +33,4 @@ public class DbConnection {
         return null;
     }
 
-    /*public Connection EmpData() {
-        try {
-            Connection conn = dc.Connect();
-            EmpData = FXCollections.observableArrayList();
-            // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT Employee.ID, Employee.FirstName, Employee.LastName, Employee.Email, Employee.Phone, Roles.Role FROM Employee LEFT JOIN Roles ON Employee.Role = Roles.ID");
-
-            while (rs.next()) {
-                //get string from db,whichever way
-                EmpData.add(new Employee(rs.getInt("ID"), rs.getString("FirstName"), rs.getString("LastName"), rs.getString("Email"), rs.getString("Phone"), rs.getString("Role")));
-            }
-
-        } catch (SQLException ex) {
-            System.err.println("Error" + ex);
-        }
-    }*/
 }
