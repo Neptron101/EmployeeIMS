@@ -83,9 +83,9 @@ public class ReportUIController implements Initializable{
 
         projectId.setText("Project Report");
 
-        LocalDate ssd = LocalDate.parse("2015-01-12");
 
-        reportDate.setValue(ssd);
+
+        
 
     }
 

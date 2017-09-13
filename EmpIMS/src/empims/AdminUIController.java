@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -109,6 +110,10 @@ public class AdminUIController implements Initializable {
     @FXML
     private Button writeReportBtn;
 
+    @FXML
+    private Text empLabel;
+
+
 
 
 
@@ -132,6 +137,8 @@ public class AdminUIController implements Initializable {
                 SelectionMode.MULTIPLE
         );
 
+        assignBtn.setDisable(true);
+        writeReportBtn.setDisable(true);
     }
 
     public Integer projectId(){
@@ -144,10 +151,18 @@ public class AdminUIController implements Initializable {
     public void getProjectRowData() throws SQLException {
         System.out.println("call");
         fill.getProjectRowData(ProjectTbl, projectStatus, employeeListView);
+        assignBtn.setDisable(false);
+
         if (fill.reportExists(ProjectTbl.getSelectionModel().getSelectedItem().getProjectId())){
             writeReportBtn.setText("View Report");
+            writeReportBtn.setDisable(false);
 
         }
+        else if (employeeListView.getItems().isEmpty()){
+            writeReportBtn.setDisable(true);
+            empLabel.setText("No Employees assigned to this Project Yet");
+        }
+
         else {
             writeReportBtn.setDisable(false);
             writeReportBtn.setText("Write Report");

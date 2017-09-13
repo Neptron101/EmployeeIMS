@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f873b050-30f4-4fc2-b34a-d42f08006a43" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/AdminUI.fxml" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/AdminUI.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/Methods.java" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/Methods.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/ReportUI.fxml" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/ReportUI.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EmpIMS/src/empims/ReportUIController.java" afterPath="$PROJECT_DIR$/EmpIMS/src/empims/ReportUIController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -37,8 +37,8 @@
       <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="111" column="16" lean-forward="false" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
+            <state relative-caret-position="528">
+              <caret line="82" column="13" lean-forward="true" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
               <folding>
                 <marker date="1505277144169" expanded="true" signature="3541:3614" ph="SELECT * FRO... Login" />
                 <marker date="1505277144169" expanded="true" signature="4246:4329" ph="SELECT * FRO... Employee" />
@@ -47,31 +47,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Methods.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Methods.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Methods.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="358" column="89" lean-forward="true" selection-start-line="358" selection-start-column="89" selection-end-line="358" selection-end-column="89" />
+            <state relative-caret-position="443">
+              <caret line="192" column="14" lean-forward="true" selection-start-line="192" selection-start-column="14" selection-end-line="192" selection-end-column="14" />
               <folding>
                 <element signature="e#4119#4128#0" expanded="true" />
-                <marker date="1505284479779" expanded="true" signature="865:1024" ph="SELECT Emplo... Employee" />
-                <marker date="1505284479779" expanded="true" signature="1770:1818" ph="SELECT Proje... Projects" />
-                <marker date="1505284479779" expanded="true" signature="6195:6238" ph="SELECT * FRO... Assignment" />
-                <marker date="1505284479779" expanded="true" signature="6269:6438" ph="select assig... assignment" />
-                <marker date="1505284479779" expanded="true" signature="6269:6439" ph="select assig... assignment" />
-                <marker date="1505284479779" expanded="true" signature="9021:9054" ph="DELETE FROM " />
-                <marker date="1505284479779" expanded="true" signature="9442:9501" ph="INSERT INTO Assignment... " />
-                <marker date="1505284479779" expanded="true" signature="10112:10150" ph="select Email... employee" />
-                <marker date="1505284479779" expanded="true" signature="10714:10791" ph="select * fro... assignment" />
-                <marker date="1505284479779" expanded="true" signature="11281:11382" ph="INSERT INTO Report... " />
-                <marker date="1505284479779" expanded="true" signature="11281:11387" ph="INSERT INTO Report... " />
-                <marker date="1505284479779" expanded="true" signature="11415:11477" ph="UPDATE Repor... " />
-                <marker date="1505284479779" expanded="true" signature="11415:11519" ph="UPDATE Repor... " />
-                <marker date="1505284479779" expanded="true" signature="11415:11564" ph="UPDATE Repor... " />
-                <marker date="1505284479779" expanded="true" signature="11415:11570" ph="UPDATE Repor... " />
-                <marker date="1505284479779" expanded="true" signature="12464:12500" ph="SELECT * Fro... Report" />
-                <marker date="1505284479779" expanded="true" signature="12920:13069" ph="select login... login" />
-                <marker date="1505284479779" expanded="true" signature="13743:13780" ph="SELECT * fro... Report" />
+                <marker date="1505286622974" expanded="true" signature="865:1024" ph="SELECT Emplo... Employee" />
+                <marker date="1505286622974" expanded="true" signature="1770:1818" ph="SELECT Proje... Projects" />
+                <marker date="1505286622974" expanded="true" signature="6195:6238" ph="SELECT * FRO... Assignment" />
+                <marker date="1505286622974" expanded="true" signature="6269:6438" ph="select assig... assignment" />
+                <marker date="1505286622974" expanded="true" signature="6269:6439" ph="select assig... assignment" />
+                <marker date="1505286622974" expanded="true" signature="8899:8932" ph="DELETE FROM " />
+                <marker date="1505286622974" expanded="true" signature="9320:9379" ph="INSERT INTO Assignment... " />
+                <marker date="1505286622974" expanded="true" signature="9990:10028" ph="select Email... employee" />
+                <marker date="1505286622974" expanded="true" signature="10592:10669" ph="select * fro... assignment" />
+                <marker date="1505286622974" expanded="true" signature="11159:11260" ph="INSERT INTO Report... " />
+                <marker date="1505286622974" expanded="true" signature="11159:11265" ph="INSERT INTO Report... " />
+                <marker date="1505286622974" expanded="true" signature="11293:11355" ph="UPDATE Repor... " />
+                <marker date="1505286622974" expanded="true" signature="11293:11397" ph="UPDATE Repor... " />
+                <marker date="1505286622974" expanded="true" signature="11293:11442" ph="UPDATE Repor... " />
+                <marker date="1505286622974" expanded="true" signature="11293:11448" ph="UPDATE Repor... " />
+                <marker date="1505286622974" expanded="true" signature="12342:12378" ph="SELECT * Fro... Report" />
+                <marker date="1505286622974" expanded="true" signature="12798:12947" ph="select login... login" />
+                <marker date="1505286622974" expanded="true" signature="13621:13658" ph="SELECT * fro... Report" />
               </folding>
             </state>
           </provider>
@@ -90,18 +90,18 @@
       <file leaf-file-name="AssignController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AssignController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
+            <state relative-caret-position="-994">
               <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReportUIController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ReportUIController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/ReportUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-271">
-              <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+            <state relative-caret-position="426">
+              <caret line="87" column="8" lean-forward="false" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,13 +112,13 @@
       <file leaf-file-name="AdminUIController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1157">
-              <caret line="295" column="0" lean-forward="false" selection-start-line="295" selection-start-column="0" selection-end-line="295" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding>
-                <marker date="1505281479682" expanded="true" signature="4178:4209" ph="SELECT * FRO... Roles" />
-                <marker date="1505281479682" expanded="true" signature="4734:4768" ph="SELECT * FRO... Employee" />
-                <marker date="1505281479682" expanded="true" signature="4837:4950" ph="SELECT * FRO... Roles" />
-                <marker date="1505281479682" expanded="true" signature="5073:5170" ph="INSERT INTO sql12175092.Employee... " />
+                <marker date="1505286420879" expanded="true" signature="4597:4628" ph="SELECT * FRO... Roles" />
+                <marker date="1505286420879" expanded="true" signature="5153:5187" ph="SELECT * FRO... Employee" />
+                <marker date="1505286420879" expanded="true" signature="5256:5369" ph="SELECT * FRO... Roles" />
+                <marker date="1505286420879" expanded="true" signature="5492:5589" ph="INSERT INTO sql12175092.Employee... " />
               </folding>
             </state>
           </provider>
@@ -141,6 +141,7 @@
       <find>getRow</find>
       <find>add</find>
       <find>project</find>
+      <find>No</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -159,7 +160,6 @@
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/SendMail.fxml" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/Assign.fxml" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/test.fxml" />
-        <option value="$PROJECT_DIR$/EmpIMS/src/empims/AdminUI.fxml" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/Project.java" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/SendMailController.java" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/ReportUI.fxml" />
@@ -169,10 +169,11 @@
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/SendMail.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b4173f67-9dc8-447d-bc38-51d68b84705f/console.sql" />
-        <option value="$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b4173f67-9dc8-447d-bc38-51d68b84705f/console_1.sql" />
-        <option value="$PROJECT_DIR$/EmpIMS/src/empims/ReportUIController.java" />
+        <option value="$PROJECT_DIR$/EmpIMS/src/empims/AdminUI.fxml" />
+        <option value="$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java" />
         <option value="$PROJECT_DIR$/EmpIMS/src/empims/Methods.java" />
+        <option value="$PROJECT_DIR$/EmpIMS/src/empims/ReportUIController.java" />
       </list>
     </option>
   </component>
@@ -705,12 +706,12 @@
       <workItem from="1504785528749" duration="12739000" />
       <workItem from="1504930307498" duration="1698000" />
       <workItem from="1505220026123" duration="20000" />
-      <workItem from="1505276946241" duration="7179000" />
+      <workItem from="1505276946241" duration="9290000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81840000" />
+    <option name="totallyTimeSpent" value="83951000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
@@ -730,7 +731,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32850242" sideWeight="0.4956076" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57856095" sideWeight="0.49134198" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21156661" sideWeight="0.49134198" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="7.320644E-4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -802,24 +803,24 @@
           <caret line="29" column="44" lean-forward="false" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
           <folding>
             <element signature="e#4119#4128#0" expanded="true" />
-            <marker date="1505284479779" expanded="true" signature="865:1024" ph="SELECT Emplo... Employee" />
-            <marker date="1505284479779" expanded="true" signature="1770:1818" ph="SELECT Proje... Projects" />
-            <marker date="1505284479779" expanded="true" signature="6195:6238" ph="SELECT * FRO... Assignment" />
-            <marker date="1505284479779" expanded="true" signature="6269:6438" ph="select assig... assignment" />
-            <marker date="1505284479779" expanded="true" signature="6269:6439" ph="select assig... assignment" />
-            <marker date="1505284479779" expanded="true" signature="9021:9054" ph="DELETE FROM " />
-            <marker date="1505284479779" expanded="true" signature="9442:9501" ph="INSERT INTO Assignment... " />
-            <marker date="1505284479779" expanded="true" signature="10112:10150" ph="select Email... employee" />
-            <marker date="1505284479779" expanded="true" signature="10714:10791" ph="select * fro... assignment" />
-            <marker date="1505284479779" expanded="true" signature="11281:11382" ph="INSERT INTO Report... " />
-            <marker date="1505284479779" expanded="true" signature="11281:11387" ph="INSERT INTO Report... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11477" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11519" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11564" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11570" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="12464:12500" ph="SELECT * Fro... Report" />
-            <marker date="1505284479779" expanded="true" signature="12920:13069" ph="select login... login" />
-            <marker date="1505284479779" expanded="true" signature="13743:13780" ph="SELECT * fro... Report" />
+            <marker date="1505286622974" expanded="true" signature="865:1024" ph="SELECT Emplo... Employee" />
+            <marker date="1505286622974" expanded="true" signature="1770:1818" ph="SELECT Proje... Projects" />
+            <marker date="1505286622974" expanded="true" signature="6195:6238" ph="SELECT * FRO... Assignment" />
+            <marker date="1505286622974" expanded="true" signature="6269:6438" ph="select assig... assignment" />
+            <marker date="1505286622974" expanded="true" signature="6269:6439" ph="select assig... assignment" />
+            <marker date="1505286622974" expanded="true" signature="8899:8932" ph="DELETE FROM " />
+            <marker date="1505286622974" expanded="true" signature="9320:9379" ph="INSERT INTO Assignment... " />
+            <marker date="1505286622974" expanded="true" signature="9990:10028" ph="select Email... employee" />
+            <marker date="1505286622974" expanded="true" signature="10592:10669" ph="select * fro... assignment" />
+            <marker date="1505286622974" expanded="true" signature="11159:11260" ph="INSERT INTO Report... " />
+            <marker date="1505286622974" expanded="true" signature="11159:11265" ph="INSERT INTO Report... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11355" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11397" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11442" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11448" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="12342:12378" ph="SELECT * Fro... Report" />
+            <marker date="1505286622974" expanded="true" signature="12798:12947" ph="select login... login" />
+            <marker date="1505286622974" expanded="true" signature="13621:13658" ph="SELECT * fro... Report" />
           </folding>
         </state>
       </provider>
@@ -912,24 +913,24 @@
           <caret line="29" column="44" lean-forward="false" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
           <folding>
             <element signature="e#4119#4128#0" expanded="true" />
-            <marker date="1505284479779" expanded="true" signature="865:1024" ph="SELECT Emplo... Employee" />
-            <marker date="1505284479779" expanded="true" signature="1770:1818" ph="SELECT Proje... Projects" />
-            <marker date="1505284479779" expanded="true" signature="6195:6238" ph="SELECT * FRO... Assignment" />
-            <marker date="1505284479779" expanded="true" signature="6269:6438" ph="select assig... assignment" />
-            <marker date="1505284479779" expanded="true" signature="6269:6439" ph="select assig... assignment" />
-            <marker date="1505284479779" expanded="true" signature="9021:9054" ph="DELETE FROM " />
-            <marker date="1505284479779" expanded="true" signature="9442:9501" ph="INSERT INTO Assignment... " />
-            <marker date="1505284479779" expanded="true" signature="10112:10150" ph="select Email... employee" />
-            <marker date="1505284479779" expanded="true" signature="10714:10791" ph="select * fro... assignment" />
-            <marker date="1505284479779" expanded="true" signature="11281:11382" ph="INSERT INTO Report... " />
-            <marker date="1505284479779" expanded="true" signature="11281:11387" ph="INSERT INTO Report... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11477" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11519" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11564" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11570" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="12464:12500" ph="SELECT * Fro... Report" />
-            <marker date="1505284479779" expanded="true" signature="12920:13069" ph="select login... login" />
-            <marker date="1505284479779" expanded="true" signature="13743:13780" ph="SELECT * fro... Report" />
+            <marker date="1505286622974" expanded="true" signature="865:1024" ph="SELECT Emplo... Employee" />
+            <marker date="1505286622974" expanded="true" signature="1770:1818" ph="SELECT Proje... Projects" />
+            <marker date="1505286622974" expanded="true" signature="6195:6238" ph="SELECT * FRO... Assignment" />
+            <marker date="1505286622974" expanded="true" signature="6269:6438" ph="select assig... assignment" />
+            <marker date="1505286622974" expanded="true" signature="6269:6439" ph="select assig... assignment" />
+            <marker date="1505286622974" expanded="true" signature="8899:8932" ph="DELETE FROM " />
+            <marker date="1505286622974" expanded="true" signature="9320:9379" ph="INSERT INTO Assignment... " />
+            <marker date="1505286622974" expanded="true" signature="9990:10028" ph="select Email... employee" />
+            <marker date="1505286622974" expanded="true" signature="10592:10669" ph="select * fro... assignment" />
+            <marker date="1505286622974" expanded="true" signature="11159:11260" ph="INSERT INTO Report... " />
+            <marker date="1505286622974" expanded="true" signature="11159:11265" ph="INSERT INTO Report... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11355" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11397" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11442" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11448" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="12342:12378" ph="SELECT * Fro... Report" />
+            <marker date="1505286622974" expanded="true" signature="12798:12947" ph="select login... login" />
+            <marker date="1505286622974" expanded="true" signature="13621:13658" ph="SELECT * fro... Report" />
           </folding>
         </state>
       </provider>
@@ -1003,10 +1004,10 @@
         <state relative-caret-position="578">
           <caret line="51" column="57" lean-forward="true" selection-start-line="51" selection-start-column="57" selection-end-line="51" selection-end-column="57" />
           <folding>
-            <marker date="1505281479682" expanded="true" signature="4178:4209" ph="SELECT * FRO... Roles" />
-            <marker date="1505281479682" expanded="true" signature="4734:4768" ph="SELECT * FRO... Employee" />
-            <marker date="1505281479682" expanded="true" signature="4837:4950" ph="SELECT * FRO... Roles" />
-            <marker date="1505281479682" expanded="true" signature="5073:5170" ph="INSERT INTO sql12175092.Employee... " />
+            <marker date="1505286420879" expanded="true" signature="4597:4628" ph="SELECT * FRO... Roles" />
+            <marker date="1505286420879" expanded="true" signature="5153:5187" ph="SELECT * FRO... Employee" />
+            <marker date="1505286420879" expanded="true" signature="5256:5369" ph="SELECT * FRO... Roles" />
+            <marker date="1505286420879" expanded="true" signature="5492:5589" ph="INSERT INTO sql12175092.Employee... " />
           </folding>
         </state>
       </provider>
@@ -1034,10 +1035,10 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1505281479682" expanded="true" signature="4178:4209" ph="SELECT * FRO... Roles" />
-            <marker date="1505281479682" expanded="true" signature="4734:4768" ph="SELECT * FRO... Employee" />
-            <marker date="1505281479682" expanded="true" signature="4837:4950" ph="SELECT * FRO... Roles" />
-            <marker date="1505281479682" expanded="true" signature="5073:5170" ph="INSERT INTO sql12175092.Employee... " />
+            <marker date="1505286420879" expanded="true" signature="4597:4628" ph="SELECT * FRO... Roles" />
+            <marker date="1505286420879" expanded="true" signature="5153:5187" ph="SELECT * FRO... Employee" />
+            <marker date="1505286420879" expanded="true" signature="5256:5369" ph="SELECT * FRO... Roles" />
+            <marker date="1505286420879" expanded="true" signature="5492:5589" ph="INSERT INTO sql12175092.Employee... " />
           </folding>
         </state>
       </provider>
@@ -1266,41 +1267,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="111" column="16" lean-forward="false" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="16" />
-          <folding>
-            <marker date="1505277144169" expanded="true" signature="3541:3614" ph="SELECT * FRO... Login" />
-            <marker date="1505277144169" expanded="true" signature="4246:4329" ph="SELECT * FRO... Employee" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AdminUI.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1157">
-          <caret line="295" column="0" lean-forward="false" selection-start-line="295" selection-start-column="0" selection-end-line="295" selection-end-column="0" />
-          <folding>
-            <marker date="1505281479682" expanded="true" signature="4178:4209" ph="SELECT * FRO... Roles" />
-            <marker date="1505281479682" expanded="true" signature="4734:4768" ph="SELECT * FRO... Employee" />
-            <marker date="1505281479682" expanded="true" signature="4837:4950" ph="SELECT * FRO... Roles" />
-            <marker date="1505281479682" expanded="true" signature="5073:5170" ph="INSERT INTO sql12175092.Employee... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b4173f67-9dc8-447d-bc38-51d68b84705f/console_1.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1311,46 +1277,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AssignController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
+        <state relative-caret-position="-994">
           <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/ReportUIController.java">
+    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-271">
-          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+        <state relative-caret-position="528">
+          <caret line="82" column="13" lean-forward="true" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1505277144169" expanded="true" signature="3541:3614" ph="SELECT * FRO... Login" />
+            <marker date="1505277144169" expanded="true" signature="4246:4329" ph="SELECT * FRO... Employee" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/Methods.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="358" column="89" lean-forward="true" selection-start-line="358" selection-start-column="89" selection-end-line="358" selection-end-column="89" />
+        <state relative-caret-position="443">
+          <caret line="192" column="14" lean-forward="true" selection-start-line="192" selection-start-column="14" selection-end-line="192" selection-end-column="14" />
           <folding>
             <element signature="e#4119#4128#0" expanded="true" />
-            <marker date="1505284479779" expanded="true" signature="865:1024" ph="SELECT Emplo... Employee" />
-            <marker date="1505284479779" expanded="true" signature="1770:1818" ph="SELECT Proje... Projects" />
-            <marker date="1505284479779" expanded="true" signature="6195:6238" ph="SELECT * FRO... Assignment" />
-            <marker date="1505284479779" expanded="true" signature="6269:6438" ph="select assig... assignment" />
-            <marker date="1505284479779" expanded="true" signature="6269:6439" ph="select assig... assignment" />
-            <marker date="1505284479779" expanded="true" signature="9021:9054" ph="DELETE FROM " />
-            <marker date="1505284479779" expanded="true" signature="9442:9501" ph="INSERT INTO Assignment... " />
-            <marker date="1505284479779" expanded="true" signature="10112:10150" ph="select Email... employee" />
-            <marker date="1505284479779" expanded="true" signature="10714:10791" ph="select * fro... assignment" />
-            <marker date="1505284479779" expanded="true" signature="11281:11382" ph="INSERT INTO Report... " />
-            <marker date="1505284479779" expanded="true" signature="11281:11387" ph="INSERT INTO Report... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11477" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11519" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11564" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="11415:11570" ph="UPDATE Repor... " />
-            <marker date="1505284479779" expanded="true" signature="12464:12500" ph="SELECT * Fro... Report" />
-            <marker date="1505284479779" expanded="true" signature="12920:13069" ph="select login... login" />
-            <marker date="1505284479779" expanded="true" signature="13743:13780" ph="SELECT * fro... Report" />
+            <marker date="1505286622974" expanded="true" signature="865:1024" ph="SELECT Emplo... Employee" />
+            <marker date="1505286622974" expanded="true" signature="1770:1818" ph="SELECT Proje... Projects" />
+            <marker date="1505286622974" expanded="true" signature="6195:6238" ph="SELECT * FRO... Assignment" />
+            <marker date="1505286622974" expanded="true" signature="6269:6438" ph="select assig... assignment" />
+            <marker date="1505286622974" expanded="true" signature="6269:6439" ph="select assig... assignment" />
+            <marker date="1505286622974" expanded="true" signature="8899:8932" ph="DELETE FROM " />
+            <marker date="1505286622974" expanded="true" signature="9320:9379" ph="INSERT INTO Assignment... " />
+            <marker date="1505286622974" expanded="true" signature="9990:10028" ph="select Email... employee" />
+            <marker date="1505286622974" expanded="true" signature="10592:10669" ph="select * fro... assignment" />
+            <marker date="1505286622974" expanded="true" signature="11159:11260" ph="INSERT INTO Report... " />
+            <marker date="1505286622974" expanded="true" signature="11159:11265" ph="INSERT INTO Report... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11355" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11397" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11442" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="11293:11448" ph="UPDATE Repor... " />
+            <marker date="1505286622974" expanded="true" signature="12342:12378" ph="SELECT * Fro... Report" />
+            <marker date="1505286622974" expanded="true" signature="12798:12947" ph="select login... login" />
+            <marker date="1505286622974" expanded="true" signature="13621:13658" ph="SELECT * fro... Report" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AdminUI.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="313" column="59" lean-forward="true" selection-start-line="313" selection-start-column="59" selection-end-line="313" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/AdminUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="111" column="0" lean-forward="true" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <marker date="1505286420879" expanded="true" signature="4597:4628" ph="SELECT * FRO... Roles" />
+            <marker date="1505286420879" expanded="true" signature="5153:5187" ph="SELECT * FRO... Employee" />
+            <marker date="1505286420879" expanded="true" signature="5256:5369" ph="SELECT * FRO... Roles" />
+            <marker date="1505286420879" expanded="true" signature="5492:5589" ph="INSERT INTO sql12175092.Employee... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EmpIMS/src/empims/ReportUIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="87" column="8" lean-forward="false" selection-start-line="87" selection-start-column="8" selection-end-line="87" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -198,10 +198,7 @@ public class Methods {
         }
 
 
-        if (listView.getItems() == null){
-            label.setText("No one is assigned to this Project yet.");
 
-        }
 
 
 
