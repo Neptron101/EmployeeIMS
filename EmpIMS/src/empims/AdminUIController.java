@@ -146,7 +146,7 @@ public class AdminUIController implements Initializable {
         fill.getProjectRowData(ProjectTbl, projectStatus, employeeListView);
         if (fill.reportExists(ProjectTbl.getSelectionModel().getSelectedItem().getProjectId())){
             writeReportBtn.setText("View Report");
-            writeReportBtn.setDisable(true);
+
         }
         else {
             writeReportBtn.setDisable(false);

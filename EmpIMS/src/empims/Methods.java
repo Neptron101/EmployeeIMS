@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javax.xml.soap.Text;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * Created by Sarah Fromming on 16/08/2017.
@@ -350,7 +351,22 @@ public class Methods {
     }
 
     public void fillReport(LocalDate date, Integer projId, String title, String description) throws SQLException {
-        String sql = "INSERT INTO Report (report.Report_Date ,report.Title, report.Description, report.Proj_ID) VALUES (?,?,?,?);";
+        String sql;
+
+        String sql1 = "INSERT INTO Report (report.Report_Date ,report.Title, report.Description, report.Proj_ID) VALUES (?,?,?,?);";
+
+        String sql2 = "UPDATE Report " +
+                "SET report.Report_Date = ?, report.Title = ? , report.Description = ?" +
+                "WHERE report.Proj_ID = ? ;";
+
+
+        if (reportExists(projId)){
+            sql = sql2;
+        }
+        else {
+            sql = sql1;
+        }
+
 
         Date sDate = Date.valueOf(date);
         System.out.println("Report Filling");
@@ -431,4 +447,36 @@ public class Methods {
     }
 
 
+    public ArrayList<String> retrieveReport(Integer projId) throws SQLException {
+        String sql = "SELECT * from Report where Proj_ID = " + projId;
+
+        ArrayList<String> report = new ArrayList<>();
+
+        dc = new DbConnection();
+        dc.Connect();
+
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()){
+            String projectID = resultSet.getString(4);
+            String title = resultSet.getString(2);
+            String description = resultSet.getString(3);
+            String date = resultSet.getString(5);
+
+            report.add(projectID);
+            report.add(date);
+            report.add(title);
+            report.add(description);
+
+
+
+        }
+        return report;
+
+    }
 }

@@ -9,6 +9,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
@@ -30,6 +31,10 @@ public class ReportUIController implements Initializable{
     @FXML
     private Button createReportBtn;
 
+    @FXML
+    private Button editReport;
+
+
 
     Integer projId;
     private AdminUIController project;
@@ -47,8 +52,20 @@ public class ReportUIController implements Initializable{
             reportDescription.setDisable(true);
             createReportBtn.setDisable(true);
 
+            ArrayList<String> report = fill.retrieveReport(this.projId);
+
+            System.out.println(report);
+
+            reportDate.setValue(LocalDate.parse(report.get(1)));
+            reportTitle.setText(report.get(2));
+            reportDescription.setText(report.get(3));
+
+
+
 
         }
+
+
 
     }
 
@@ -59,6 +76,8 @@ public class ReportUIController implements Initializable{
 
         project = new AdminUIController();
 
+
+        System.out.println(projId);
 
 
 
@@ -90,5 +109,13 @@ public class ReportUIController implements Initializable{
 
     }
 
+    @FXML
+    public void handleEditBtnAction() {
+        reportDate.setDisable(false);
+        reportTitle.setDisable(false);
+        reportDescription.setDisable(false);
+        createReportBtn.setDisable(false);
+
+    }
 
 }
