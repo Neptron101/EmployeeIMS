@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import javax.xml.soap.Text;
 import java.sql.*;
+import java.time.LocalDate;
 
 /**
  * Created by Sarah Fromming on 16/08/2017.
@@ -276,10 +277,10 @@ public class Methods {
     public void assign (int projectId, int employeeId) throws SQLException {
         String sql = "INSERT INTO Assignment (EmployeeID, ProjectId) VALUES (?,?);";
         System.out.println("P = " + projectId + "E = " +employeeId);
-        System.out.println("1");
+
         dc = new DbConnection();
         Connection connection =dc.Connect();
-        System.out.println("2");
+
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setInt(1, employeeId);
@@ -300,4 +301,134 @@ public class Methods {
     public void addNew() {
 
     }
+
+    public void sendMail(Integer projectId, int empId) throws SQLException{
+        String sql = "select Email from employee where ID = " + empId;
+
+        dc = new DbConnection();
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()){
+            String email = resultSet.getString("Email");
+            System.out.println(email);
+
+            SendMail sendMail = new SendMail();
+            sendMail.sendMail(email, projectId);
+
+        }
+
+
+
+
+
+
+    }
+
+    public boolean employeeExist(int projectId, int employeeId) throws SQLException {
+        String sql = "select * from assignment where ProjectID = "+ projectId + " and EmployeeID = " + employeeId;
+
+        dc = new DbConnection();
+        dc.Connect();
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()){
+            return true;
+        }
+
+
+        return false;
+    }
+
+    public void fillReport(LocalDate date, Integer projId, String title, String description) throws SQLException {
+        String sql = "INSERT INTO Report (report.Report_Date ,report.Title, report.Description, report.Proj_ID) VALUES (?,?,?,?);";
+
+        Date sDate = Date.valueOf(date);
+        System.out.println("Report Filling");
+        System.out.println(sDate);
+        System.out.println(projId);
+        System.out.println(title);
+        System.out.println(description);
+
+        dc = new DbConnection();
+        Connection connection =dc.Connect();
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        preparedStatement.setString(1, String.valueOf(sDate));
+        preparedStatement.setString(2, title);
+        preparedStatement.setString(3, description);
+        preparedStatement.setInt(4,projId);
+
+        System.out.println(sql);
+        preparedStatement.execute();
+
+
+    }
+
+    public boolean reportExists(int projectId) throws SQLException {
+        String sql = "SELECT * From Report WHERE Proj_ID =" + projectId;
+
+        dc = new DbConnection();
+
+        dc.Connect();
+
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()) {
+            return true;
+
+        }
+
+        return false;
+
+    }
+
+    public void forgotPassword(int empId) throws SQLException {
+        String sql = "select login.Password,employee.Email " +
+                "from login,employee " +
+                "where login.EmpID = employee.ID and employee.ID = " + empId;
+
+
+        dc = new DbConnection();
+        dc.Connect();
+
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()){
+            String email = resultSet.getString(2);
+            String password = resultSet.getString(1);
+
+            System.out.println("e= " + email+ " id= " + password  );
+
+            SendMail sendMail = new SendMail();
+
+            sendMail.sendMailForgotPassword(email,password);
+
+        }
+
+
+
+    }
+
+
 }

@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -42,6 +43,9 @@ public class LoginController implements Initializable{
     String PW;
 
     private DbConnection dC;
+
+    Methods fill = new Methods();
+
 
     @FXML
     private void handlelogInAction() throws IOException, SQLException{
@@ -100,16 +104,34 @@ public class LoginController implements Initializable{
 
     @FXML
     private void handleForgotPassword(){
-
-
         System.out.println("Forgot Password Button Clicked");
-        Notifications forgotPasswordNotification = Notifications.create()
-                .title("Password Sent")
-                .text("The Password has been sent to your email address")
-                .graphic(null)
-                .hideAfter(Duration.seconds(5))
-                .position(Pos.CENTER);
-        forgotPasswordNotification.showInformation();
+        if (userId.getText().trim().isEmpty()){
+            invalid_lbl.setText("Enter the User Id");
+        }
+        else {
+            invalid_lbl.setText("");
+
+            int empId = Integer.parseInt(userId.getText());
+
+
+            try {
+                fill.forgotPassword(empId);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
+            Notifications forgotPasswordNotification = Notifications.create()
+                    .title("Password Sent")
+                    .text("The Password has been sent to your email address")
+                    .graphic(null)
+                    .hideAfter(Duration.seconds(5))
+                    .position(Pos.CENTER);
+            forgotPasswordNotification.showInformation();
+        }
+
+
+
 
     }
 

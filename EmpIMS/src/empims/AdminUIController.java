@@ -144,6 +144,15 @@ public class AdminUIController implements Initializable {
     public void getProjectRowData() throws SQLException {
         System.out.println("call");
         fill.getProjectRowData(ProjectTbl, projectStatus, employeeListView);
+        if (fill.reportExists(ProjectTbl.getSelectionModel().getSelectedItem().getProjectId())){
+            writeReportBtn.setText("View Report");
+            writeReportBtn.setDisable(true);
+        }
+        else {
+            writeReportBtn.setDisable(false);
+            writeReportBtn.setText("Write Report");
+        }
+
 
     }
 
@@ -270,16 +279,39 @@ public class AdminUIController implements Initializable {
     }
 
     @FXML
-    public void handleWriteReportBtnAction(){
+    public void handleWriteReportBtnAction() throws SQLException {
+        System.out.println("Report btn Clicked");
+        Project project= ProjectTbl.getSelectionModel().getSelectedItem();
+        projectId = project.getProjectId();
+
+
+
+        System.out.println("Project Id sent to write report = " + projectId);
+
+        FXMLLoader reportLoader = new FXMLLoader(getClass().getResource("ReportUI.fxml"));
+
+
+        Parent root = null;
+        try {
+            root = reportLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Pass project Id to another window
+        ReportUIController controller = reportLoader.<ReportUIController>getController();
+        controller.initProID(projectId);
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Write Report");
+        stage.setScene(scene);
+        stage.show();
 
 
     }
 
-    public Integer getProjectId(){
-        System.out.println("TEST" + projectId);
-        return projectId;
 
-
-    }
 }
 

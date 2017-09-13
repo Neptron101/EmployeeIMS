@@ -95,7 +95,17 @@ public class AssignController implements Initializable{
             Methods assignment = new Methods();
             System.out.println("P= " + projectId + " E= " + empId);
 
-            assignment.assign(projectId,empId);
+            if (assignment.employeeExist(projectId, empId)){
+                System.out.println("Employee already assigned to the project");
+
+            }
+
+            else {
+                System.out.println("Employee Assigned");
+                assignment.assign(projectId,empId);
+                //assignment.sendMail(projectId,empId);
+            }
+
 
 
 
@@ -118,16 +128,7 @@ public class AssignController implements Initializable{
         employeeAddedNotification.showInformation();
 
 
-        WebView webView = new WebView();
-        NotificationPane sendMailNotification = new NotificationPane(webView);
 
-        Tab tab1 = new Tab(("Tab 1"));
-        tab1.setContent(sendMailNotification);
-
-        TabPane tabPane = new TabPane();
-        tabPane.getTabs().addAll(tab1);
-
-        sendMailNotification.setText("Send Mail?");
 
 
 
