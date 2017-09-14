@@ -291,10 +291,10 @@
                                        <menus>
                                           <Menu mnemonicParsing="false" text="Manage">
                                              <items>
-                                                <MenuItem fx:id="close1" mnemonicParsing="false" onAction="#handleAssignBtnAction" text="Assign" />
+                                                <MenuItem fx:id="assign" disable="true" mnemonicParsing="false" onAction="#handleAssignBtnAction" text="Assign" />
                                                 <MenuItem mnemonicParsing="false" onAction="#addNewP" text="Add" />
-                                                <MenuItem mnemonicParsing="false" text="Modify" />
-                                                <MenuItem mnemonicParsing="false" text="Delete" />
+                                                <MenuItem fx:id="modifyP" disable="true" mnemonicParsing="false" onAction="#modifyP" text="Modify" />
+                                                <MenuItem fx:id="deleteP" disable="true" mnemonicParsing="false" onAction="#deleteP" text="Delete" />
                                                 <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
                                              </items>
                                           </Menu>
@@ -413,6 +413,15 @@
                                           <Button fx:id="btnCancelP" mnemonicParsing="false" onAction="#cancelP" prefHeight="34.0" text="Cancel" visible="false">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" left="60.0" right="5.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Button fx:id="btnAssignees" mnemonicParsing="false" onAction="#handleShowAssignees" text="Show assignees">
+                                             <HBox.margin>
+                                                <Insets left="5.0" top="5.0" />
                                              </HBox.margin>
                                           </Button>
                                        </children>

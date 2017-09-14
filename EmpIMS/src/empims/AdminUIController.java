@@ -1,5 +1,6 @@
 package empims;
 
+import com.intellij.psi.util.PsiFormatUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,12 +30,6 @@ import java.text.ParseException;
 import java.util.ResourceBundle;
 
 public class AdminUIController implements Initializable {
-
-    @FXML
-    private MenuItem close;
-
-    @FXML
-    private MenuItem add;
 
     @FXML
     private TextField txtSearch;
@@ -106,16 +101,37 @@ public class AdminUIController implements Initializable {
     private Button btnSave;
 
     @FXML
+    private Button btnSaveP;
+
+    @FXML
     private Button btnCancel;
+
+    @FXML
+    private Button btnCancelP;
 
     @FXML
     private Button btnUpdate;
 
     @FXML
+    private Button btnUpdateP;
+
+    @FXML
+    private Button btnAssignees;
+
+    @FXML
     private MenuItem delete;
 
     @FXML
+    private MenuItem deleteP;
+
+    @FXML
     private MenuItem modify;
+
+    @FXML
+    private MenuItem modifyP;
+
+    @FXML
+    private MenuItem assign;
 
     private Methods fill;
     private DbConnection db;
@@ -135,13 +151,6 @@ public class AdminUIController implements Initializable {
         );
     }
 
-    public Integer projectId() {
-        Project project = ProjectTbl.getSelectionModel().getSelectedItem();
-        Integer projectId = project.getProjectId();
-        return projectId;
-
-    }
-
     public void getRowData() {
         fill.getRowData(EmployeeTbl, lblID, txtFirstName, txtLastName, txtEmail, txtPhone, txtPosition);
         delete.setDisable(false);
@@ -151,6 +160,9 @@ public class AdminUIController implements Initializable {
     public void getRowDataP() {
         txtDesc.setWrapText(true);
         fill.getRowDataP(ProjectTbl, lblIDP, txtTitle, txtDesc);
+        deleteP.setDisable(false);
+        modifyP.setDisable(false);
+        assign.setDisable(false);
     }
 
     public void close() {
@@ -194,6 +206,10 @@ public class AdminUIController implements Initializable {
         ProjectTbl.setDisable(true);
         txtTitle.setText("");
         txtDesc.setText("");
+        btnSaveP.setVisible(true);
+        btnCancelP.setVisible(true);
+        txtTitle.setEditable(true);
+        txtDesc.setEditable(true);
 
         db = new DbConnection();
         try {
@@ -253,7 +269,12 @@ public class AdminUIController implements Initializable {
     }
 
     public void cancelP() {
-
+        deleteP.setVisible(false);
+        btnSaveP.setVisible(false);
+        btnUpdateP.setVisible(false);
+        ProjectTbl.setDisable(false);
+        txtDesc.setEditable(false);
+        txtTitle.setEditable(false);
     }
 
     public void modify() {
@@ -279,6 +300,15 @@ public class AdminUIController implements Initializable {
         choiceBox.getSelectionModel().select(position);
     }
 
+    public void modifyP() {
+        btnUpdateP.setVisible(true);
+        btnSaveP.setVisible(false);
+        btnCancelP.setVisible(true);
+        ProjectTbl.setDisable(true);
+        txtTitle.setEditable(true);
+        txtDesc.setEditable(true);
+    }
+
     public void update() throws SQLException {
         fill.update(lblID, txtFirstName, txtLastName, txtEmail, txtPhone, choiceBox);
 
@@ -296,10 +326,18 @@ public class AdminUIController implements Initializable {
         fill.updateP(lblIDP, txtTitle, txtDesc);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("New Project created");
+        alert.setTitle("Information");
         alert.setHeaderText(null);
-        alert.setContentText("The new record for " + txtTitle.getText() + " has been successfully created. The project ID is: " + lblIDP.getText());
+        alert.setContentText("Project information successfully updated.");
         alert.showAndWait();
+
+        fill.initializeP(idColP, titleCol, ProjectTbl, txtSearchP);
+        btnCancelP.setVisible(false);
+        btnUpdateP.setVisible(false);
+        btnSaveP.setVisible(false);
+        ProjectTbl.setDisable(false);
+        txtTitle.setEditable(false);
+        txtDesc.setEditable(false);
     }
 
     public void delete() {
@@ -309,7 +347,13 @@ public class AdminUIController implements Initializable {
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
     }
 
-    @FXML
+    public void deleteP() {
+        Project project = ProjectTbl.getSelectionModel().getSelectedItem();
+
+        fill.deleteP(project.getProjectId(), lblIDP, txtTitle, txtDesc, ProjectTbl);
+        fill.initializeP(idColP, titleCol, ProjectTbl, txtSearchP);
+    }
+
     public void handleAssignBtnAction() throws IOException {
         System.out.println("Assign Button Clicked");
 
@@ -336,10 +380,28 @@ public class AdminUIController implements Initializable {
 
     }
 
-    public Integer getProjectId() {
-        System.out.println("TEST" + projectId);
-        return projectId;
-    }
+    public void handleShowAssignees() throws IOException {
+        System.out.println("Assignee Button Clicked");
 
+        Project project = ProjectTbl.getSelectionModel().getSelectedItem();
+        projectId = project.getProjectId();
+
+        System.out.println("Project ID sent = " + projectId);
+
+        FXMLLoader assignedLoader = new FXMLLoader(getClass().getResource("Assigned.fxml"));
+
+        Parent root = assignedLoader.load();
+
+        //AssignedUIController controller1 = assignedLoader.<AssignController>getController();
+        //controller1.initProID(projectId);
+
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Assigned Employee for the Project");
+        stage.setScene(scene);
+        stage.show();
+    }
 }
 

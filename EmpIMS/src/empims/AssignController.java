@@ -60,9 +60,11 @@ public class AssignController implements Initializable{
         empTable.getSelectionModel().setSelectionMode(
                 SelectionMode.MULTIPLE
         );
+        
         project = new AdminUIController();
 
         System.out.println("Project Id received to assign employees = " + projectId);
+
 
 
     }
