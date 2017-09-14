@@ -103,7 +103,7 @@ public class AssignController implements Initializable{
             else {
                 System.out.println("Employee Assigned");
                 assignment.assign(projectId,empId);
-                //assignment.sendMail(projectId,empId);
+                assignment.sendMail(projectId,empId);
             }
 
 
