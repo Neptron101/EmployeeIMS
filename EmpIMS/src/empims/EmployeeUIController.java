@@ -24,6 +24,9 @@ public class EmployeeUIController implements Initializable {
     private TableView<Employee> EmployeeTbl;
 
     @FXML
+    private TableView<Project> ProjectTbl;
+
+    @FXML
     private TableColumn<Employee, String> firstNameCol;
 
     @FXML
@@ -31,6 +34,18 @@ public class EmployeeUIController implements Initializable {
 
     @FXML
     private TableColumn<Employee, Integer> idCol;
+
+    @FXML
+    private TableColumn<Project, Integer> idColP;
+
+    @FXML
+    private TableColumn<Project, String> titleCol;
+
+    @FXML
+    private TextField txtTitle;
+
+    @FXML
+    private TextArea txtDesc;
 
     @FXML
     private TextField txtFirstName;
@@ -51,19 +66,17 @@ public class EmployeeUIController implements Initializable {
     private TextField txtSearch;
 
     @FXML
-    private ChoiceBox choiceBox;
+    private TextField txtSearchP;
 
-    @FXML
-    private HBox hBoxPos;
-
-    @FXML
-    private HBox hBoxSwap;
 
     @FXML
     private MenuItem close;
 
     @FXML
     private Label lblID;
+
+    @FXML
+    private Label lblIDP;
 
     private Methods fill;
 
@@ -73,10 +86,16 @@ public class EmployeeUIController implements Initializable {
         // TODO
         fill = new Methods();
         fill.initialize(idCol,firstNameCol,lastNameCol,EmployeeTbl,txtSearch);
+        fill.initializeP(idColP, titleCol, ProjectTbl, txtSearchP);
     }
 
     public void getRowData() {
         fill.getRowData(EmployeeTbl,lblID,txtFirstName,txtLastName,txtEmail,txtPhone,txtPosition);
+    }
+
+    public void getRowDataP() {
+        txtDesc.setWrapText(true);
+        fill.getRowDataP(ProjectTbl, lblIDP,txtTitle,txtDesc);
     }
 
     public void close() {

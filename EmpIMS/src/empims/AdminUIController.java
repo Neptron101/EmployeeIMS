@@ -113,6 +113,36 @@ public class AdminUIController implements Initializable {
     @FXML
     private Text empLabel;
 
+    @FXML
+    private TextField txtTitle;
+
+    @FXML
+    private TextArea txtDesc;
+
+    @FXML
+    private Label lblIDP;
+
+    @FXML
+    private MenuItem modifyP;
+
+    @FXML
+    private MenuItem deleteP;
+
+
+    @FXML
+    private Button btnCancelP;
+
+
+    @FXML
+    private Button btnUpdateP;
+
+    @FXML
+    private Button btnSaveP;
+
+    @FXML
+    private Button btnUpdate;
+
+
 
 
 
@@ -168,6 +198,11 @@ public class AdminUIController implements Initializable {
             writeReportBtn.setText("Write Report");
         }
 
+        txtDesc.setWrapText(true);
+        fill.getRowDataP(ProjectTbl, lblIDP, txtTitle, txtDesc);
+        deleteP.setDisable(false);
+        modifyP.setDisable(false);
+
 
     }
 
@@ -175,6 +210,14 @@ public class AdminUIController implements Initializable {
         fill.getRowData(EmployeeTbl, lblID, txtFirstName, txtLastName, txtEmail, txtPhone, txtPosition);
         delete.setDisable(false);
         modify.setDisable(false);
+    }
+
+    public void getRowDataP() {
+        txtDesc.setWrapText(true);
+        fill.getRowDataP(ProjectTbl, lblIDP, txtTitle, txtDesc);
+        deleteP.setDisable(false);
+        modifyP.setDisable(false);
+
     }
 
     public void close() {
@@ -210,45 +253,145 @@ public class AdminUIController implements Initializable {
         choiceBox.setItems(FXCollections.observableArrayList(roles));
     }
 
+    public void addNewP() {
+        ProjectTbl.setDisable(true);
+        txtTitle.setText("");
+        txtDesc.setText("");
+        btnSaveP.setVisible(true);
+        btnCancelP.setVisible(true);
+        txtTitle.setEditable(true);
+        txtDesc.setEditable(true);
+
+        db = new DbConnection();
+        try {
+            Connection conn = db.Connect();
+            String sql = "INSERT INTO sql12175092.Projects VALUE ()";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.executeUpdate();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Projects ORDER BY ID DESC LIMIT 1");
+            // Execute query and store result in a resultset
+            roles = FXCollections.observableArrayList();
+            if (rs.next()) {
+                System.out.println("Successfully interserted");
+                lblIDP.setText(rs.getString("ID"));
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+    }
+
     public void save() {
         try {
             Connection conn = db.Connect();
-            ResultSet rs2 = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Employee");
-            ResultSet rs3 = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles WHERE Role = '" + choiceBox.getSelectionModel().getSelectedItem().toString() + "'");
-            roles = FXCollections.observableArrayList();
-            if (rs2.next()) {
-                String query = "INSERT INTO sql12175092.Employee (FirstName, LastName, Email, Phone, Role) VALUES (?, ?, ?, ?, ?)";
-                PreparedStatement preStmt = conn.prepareStatement(query);
-                preStmt.setString(1, txtFirstName.getText());
-                preStmt.setString(2, txtLastName.getText());
-                preStmt.setString(3, txtEmail.getText());
-                preStmt.setString(4, txtPhone.getText());
-                String role = rs2.getString("Role");
-                if (rs3.next()) {
-                    Integer roleID = rs3.getInt("ID");
-                    preStmt.setInt(5, roleID);
-                }
-                preStmt.execute();
-                rs2.close();
-                rs3.close();
-                conn.close();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles WHERE Role = '" + choiceBox.getSelectionModel().getSelectedItem().toString() + "'");
+            if (rs.next()) {
+                fill.update(lblID, txtFirstName, txtLastName, txtEmail, txtPhone, choiceBox);
             }
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("New Employee created");
+            alert.setHeaderText(null);
+            alert.setContentText("The new record for " + txtFirstName.getText() + " " + txtLastName.getText() + " has been successfully created. The employee ID is: " + lblID.getText());
+            alert.showAndWait();
+
         } catch (
                 SQLException ex) {
             System.err.println("Error" + ex);
         }
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
-        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
+        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, btnUpdate, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
     }
 
+    public void saveP() throws SQLException {
+
+        fill.updateP(lblIDP, txtTitle, txtDesc);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("New Project created");
+        alert.setHeaderText(null);
+        alert.setContentText("The new record for " + txtTitle.getText() + " has been successfully created. The project ID is: " + lblIDP.getText());
+        alert.showAndWait();
+
+    }
+
+
+
     public void cancel() {
-        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
+        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, btnUpdate, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
         delete.setDisable(true);
+    }
+
+    public void cancelP() {
+        deleteP.setVisible(false);
+        btnSaveP.setVisible(false);
+        btnUpdateP.setVisible(false);
+        ProjectTbl.setDisable(false);
+        txtDesc.setEditable(false);
+        txtTitle.setEditable(false);
     }
 
 
     public void modify() {
+        String position = txtPosition.getText();
         fill.swap(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, txtFirstName, txtLastName, txtEmail, txtPhone);
+        btnUpdate.setVisible(true);
+        btnSave.setVisible(false);
+        db = new DbConnection();
+        try {
+            Connection conn = db.Connect();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles");
+            roles = FXCollections.observableArrayList();
+            while (rs.next()) {
+                //get string from db,whichever way
+                roles.add(rs.getString("Role"));
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+
+        choiceBox.setItems(FXCollections.observableArrayList(roles));
+        choiceBox.getSelectionModel().select(position);
+    }
+
+    public void modifyP() {
+        btnUpdateP.setVisible(true);
+        btnSaveP.setVisible(false);
+        btnCancelP.setVisible(true);
+        ProjectTbl.setDisable(true);
+        txtTitle.setEditable(true);
+        txtDesc.setEditable(true);
+    }
+
+    public void update() throws SQLException {
+        fill.update(lblID, txtFirstName, txtLastName, txtEmail, txtPhone, choiceBox);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Employee information successfully updated.");
+        alert.showAndWait();
+
+        fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
+        fill.end(EmployeeTbl, txtPosition, hBoxPos, choiceBox, hBoxSwap, btnCancel, btnSave, btnUpdate, txtFirstName, txtLastName, txtEmail, txtPhone, lblID);
+    }
+
+    public void updateP() throws SQLException {
+        fill.updateP(lblIDP, txtTitle, txtDesc);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Project information successfully updated.");
+        alert.showAndWait();
+
+        fill.initializeP(projectIdCol,projectTitleCol, ProjectTbl, txtSearchP);
+        btnCancelP.setVisible(false);
+        btnUpdateP.setVisible(false);
+        btnSaveP.setVisible(false);
+        ProjectTbl.setDisable(false);
+        txtTitle.setEditable(false);
+        txtDesc.setEditable(false);
     }
 
     public void delete() {
@@ -259,6 +402,13 @@ public class AdminUIController implements Initializable {
         System.out.println("Successful deleted");
 
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
+    }
+
+    public void deleteP() {
+        Project project = ProjectTbl.getSelectionModel().getSelectedItem();
+
+        fill.deleteP(project.getProjectId(), lblIDP, txtTitle, txtDesc, ProjectTbl);
+        fill.initializeP(projectIdCol,projectTitleCol, ProjectTbl, txtSearchP);
     }
 
     @FXML

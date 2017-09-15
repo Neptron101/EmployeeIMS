@@ -11,6 +11,7 @@ import javax.xml.soap.Text;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * Created by Sarah Fromming on 16/08/2017.
@@ -47,10 +48,10 @@ public class Methods {
             Connection connection = dc.Connect();
             ProjectData = FXCollections.observableArrayList();
 
-            ResultSet resultSet = connection.createStatement().executeQuery("SELECT Projects.ID, Projects.Title FROM Projects;");
+            ResultSet resultSet = connection.createStatement().executeQuery("SELECT Projects.ID, Projects.Title,projects.Description FROM Projects;");
 
             while(resultSet.next()){
-                ProjectData.add(new Project(resultSet.getInt("ID"), resultSet.getString("Title")));
+                ProjectData.add(new Project(resultSet.getInt("ID"), resultSet.getString("Title"), resultSet.getString("Description")));
 
             }
             resultSet.close();
@@ -157,6 +158,13 @@ public class Methods {
 
     }
 
+    public  void getRowDataP(TableView table, Label lbl, TextField title, TextArea desc) {
+	    Project project = (Project) table.getSelectionModel().getSelectedItem();
+	    lbl.setText(String.valueOf(project.getProjectId()));
+	    title.setText(project.getProjectTitle());
+	    desc.setText(project.getProjectDesc());
+    }
+
     public void getProjectRowData(TableView tableView, Label label, ListView listView) throws SQLException {
         listView.getItems().clear();
         Project project = (Project) tableView.getSelectionModel().getSelectedItem();
@@ -196,12 +204,6 @@ public class Methods {
             listView.getItems().add(list);
 
         }
-
-
-
-
-
-
     }
 
 
@@ -211,7 +213,7 @@ public class Methods {
         app.close();
     }
 
-    public void end(TableView table, TextField pos, HBox posi, ChoiceBox cb, HBox swap, Button cancel, Button save, TextField first, TextField last, TextField email, TextField phone, Label lbl) {
+    public void end(TableView table, TextField pos, HBox posi, ChoiceBox cb, HBox swap, Button cancel, Button save, Button update, TextField first, TextField last, TextField email, TextField phone, Label lbl) {
         table.setDisable(false);
 
         pos.setLayoutX(252);
@@ -226,6 +228,8 @@ public class Methods {
         cb.setVisible(false);
         cancel.setVisible(false);
         save.setVisible(false);
+        update.setVisible(false);
+
 
         lbl.setText("");
         first.setText("");
@@ -271,6 +275,71 @@ public class Methods {
             System.out.println(e.getMessage());
         }
     }
+    public void deleteP(int id, Label lbl, TextField title, TextArea desc, TableView table) {
+        Project project = (Project) table.getSelectionModel().getSelectedItem();
+        Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
+        alert2.setTitle("Confirmation");
+        alert2.setHeaderText("Please confirm the deletion of " + project.getProjectTitle() + "");
+        alert2.setContentText("Are you sure you want to delete this project?");
+
+        Optional<ButtonType> result = alert2.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            String sql = "DELETE FROM Projects WHERE ID = ?";
+
+            try (Connection conn = dc.Connect();
+                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setInt(1, id);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Deletion Successful");
+            alert.setContentText(project.getProjectTitle() + " has been successfully deleted.");
+            alert.showAndWait();
+
+            lbl.setText("");
+            title.setText("");
+            desc.setText("");
+        } else {
+
+        }
+    }
+
+    public void update(Label label, TextField first, TextField last, TextField email, TextField phone, ChoiceBox pos) throws SQLException {
+        String sql = "UPDATE Employee SET FirstName = ?, LastName = ?, Email = ?, Phone = ?, Role = ? WHERE ID = ?";
+        Connection conn = dc.Connect();
+        ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles WHERE Role = '" + pos.getSelectionModel().getSelectedItem().toString() + "'");
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1, first.getText());
+        pstmt.setString(2, last.getText());
+        pstmt.setString(3, email.getText());
+        pstmt.setString(4, phone.getText());
+        if (rs.next()) {
+            Integer roleID = rs.getInt("ID");
+            pstmt.setInt(5, roleID);
+        }
+        pstmt.setString(6, label.getText());
+        pstmt.executeUpdate();
+        rs.close();
+        conn.close();
+    }
+
+    public void updateP(Label label, TextField title, TextArea desc) throws SQLException {
+        String sql = "UPDATE Projects SET Title = ?, Description = ? WHERE ID = ?";
+        Connection conn = dc.Connect();
+
+        PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        pstmt.setString(1,title.getText());
+        pstmt.setString(2, desc.getText());
+        pstmt.setString(3, label.getText());
+        pstmt.executeUpdate();
+        conn.close();
+    }
 
     public void assign (int projectId, int employeeId) throws SQLException {
         String sql = "INSERT INTO Assignment (EmployeeID, ProjectId) VALUES (?,?);";
@@ -285,6 +354,7 @@ public class Methods {
             preparedStatement.setInt(2, projectId);
             System.out.println(sql);
             preparedStatement.executeUpdate();
+
 
 
 
@@ -476,4 +546,6 @@ public class Methods {
         return report;
 
     }
+
+
 }

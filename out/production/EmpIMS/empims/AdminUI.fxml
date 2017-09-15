@@ -12,6 +12,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
@@ -244,6 +245,11 @@
                                     </HBox>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
+                                          <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#update" prefHeight="25.0" prefWidth="53.0" text="Update">
+                                             <HBox.margin>
+                                                <Insets top="5.0" />
+                                             </HBox.margin>
+                                          </Button>
                                           <Button fx:id="btnSave" mnemonicParsing="false" onAction="#save" prefHeight="34.0" text="Save" visible="false">
                                              <HBox.margin>
                                                 <Insets bottom="5.0" left="80.0" right="5.0" top="5.0" />
@@ -274,14 +280,11 @@
                                 <menus>
                                   <Menu mnemonicParsing="false" text="Manage">
                                     <items>
+                                          <MenuItem fx:id="addP" mnemonicParsing="false" onAction="#addNewP" text="Add" />
+                                          <MenuItem fx:id="modifyP" mnemonicParsing="false" onAction="#modifyP" text="Modify" />
+                                          <MenuItem fx:id="deleteP" mnemonicParsing="false" onAction="#deleteP" text="Delete" />
                                       <MenuItem fx:id="closeP" mnemonicParsing="false" onAction="#close" text="Close" />
-                                          <MenuItem fx:id="addP" mnemonicParsing="false" text="Add" />
                                     </items>
-                                  </Menu>
-                                  <Menu mnemonicParsing="false" text="Assign">
-                                       <items>
-                                          <MenuItem fx:id="assign" mnemonicParsing="false" onAction="#handleAssignBtnAction" text="Assign" />
-                                       </items>
                                   </Menu>
                                 </menus>
                               </MenuBar>
@@ -303,28 +306,53 @@
                                         <TableColumn fx:id="projectTitleCol" prefWidth="231.0" text="Project Title" />
                                       </columns>
                                     </TableView>
-                                    <VBox prefHeight="430.0" prefWidth="278.0">
-                                       <children>
-                                          <Text fx:id="empLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Employees in the Project" textAlignment="CENTER">
-                                             <VBox.margin>
-                                                <Insets top="8.0" />
-                                             </VBox.margin>
-                                             <font>
-                                                <Font name="System Bold" size="12.0" />
-                                             </font></Text>
-                                          <ListView fx:id="employeeListView" prefHeight="423.0" prefWidth="277.0" />
-                                          <HBox prefHeight="93.0" prefWidth="277.0" spacing="20.0">
-                                             <children>
-                                                <Label fx:id="projectStatus" prefHeight="17.0" prefWidth="85.0" />
-                                                <Button fx:id="assignBtn" mnemonicParsing="false" onAction="#handleAssignBtnAction" text="Assign" />
-                                                <Button fx:id="writeReportBtn" mnemonicParsing="false" onAction="#handleWriteReportBtnAction" text="Write a Report" />
-                                             </children>
-                                             <VBox.margin>
-                                                <Insets top="7.0" />
-                                             </VBox.margin>
-                                          </HBox>
-                                       </children>
-                                    </VBox>
+                                    <TabPane prefHeight="430.0" prefWidth="277.0" tabClosingPolicy="UNAVAILABLE">
+                                      <tabs>
+                                        <Tab id="employeeAssigned" text="Employee Assigned">
+                                             <content>
+                                                <VBox prefHeight="430.0" prefWidth="278.0">
+                                                   <children>
+                                                      <Text fx:id="empLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Employees in the Project" textAlignment="CENTER">
+                                                         <VBox.margin>
+                                                            <Insets top="8.0" />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <ListView fx:id="employeeListView" prefHeight="398.0" prefWidth="277.0" />
+                                                      <HBox prefHeight="93.0" prefWidth="277.0" spacing="20.0">
+                                                         <children>
+                                                            <Label fx:id="projectStatus" prefHeight="17.0" prefWidth="85.0" />
+                                                            <Button fx:id="assignBtn" mnemonicParsing="false" onAction="#handleAssignBtnAction" text="Assign" />
+                                                            <Button fx:id="writeReportBtn" mnemonicParsing="false" onAction="#handleWriteReportBtnAction" text="Write a Report" />
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="7.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </content>
+                                          </Tab>
+                                        <Tab id="projectDescription" text="Project Description">
+                                             <content>
+                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label layoutX="120.0" layoutY="14.0" text="Project" />
+                                                      <Label fx:id="lblIDP" layoutX="162.0" layoutY="14.0" />
+                                                      <Label layoutX="3.0" layoutY="53.0" text="Title" />
+                                                      <Label layoutX="5.0" layoutY="101.0" text="Label" />
+                                                      <TextField fx:id="txtTitle" layoutX="57.0" layoutY="49.0" prefHeight="25.0" prefWidth="209.0" />
+                                                      <TextArea fx:id="txtDesc" layoutX="57.0" layoutY="101.0" prefHeight="242.0" prefWidth="208.0" />
+                                                      <Button fx:id="btnUpdateP" layoutX="57.0" layoutY="353.0" mnemonicParsing="false" onAction="#updateP" text="Update" />
+                                                      <Button fx:id="btnSaveP" layoutX="135.0" layoutY="353.0" mnemonicParsing="false" onAction="#saveP" text="Save" />
+                                                      <Button fx:id="btnCancelP" layoutX="211.0" layoutY="353.0" mnemonicParsing="false" onAction="#cancelP" text="Cancel" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content></Tab>
+                                      </tabs>
+                                    </TabPane>
                                  </children>
                               </HBox>
                            </children>

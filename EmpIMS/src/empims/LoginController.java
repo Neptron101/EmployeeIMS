@@ -10,8 +10,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -84,6 +86,15 @@ public class LoginController implements Initializable{
             else {
                 System.out.println("Employee Logged In!");
 
+                FXMLLoader employeeLoader = new FXMLLoader(getClass().getResource("EmployeeUI.fxml"));
+                Parent root = employeeLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.getIcons().add(new Image("/empims/images/Logo.png"));
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.resizableProperty().setValue(false);
+                stage.show();
+                loginStage.hide();
 
             }
 
