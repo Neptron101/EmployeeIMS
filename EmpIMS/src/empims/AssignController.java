@@ -7,9 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.web.WebView;
 import javafx.util.Duration;
+import org.controlsfx.control.NotificationPane;
 import org.controlsfx.control.Notifications;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -62,7 +66,10 @@ public class AssignController implements Initializable{
 
         project = new AdminUIController();
 
-        System.out.println("Project Id received to assign employees = " + projectId);
+
+
+
+
 
 
     }
@@ -77,21 +84,36 @@ public class AssignController implements Initializable{
         System.out.println("List"+employeeList);
         Integer i = employeeList.size();
 
+
         System.out.println("initial i = " + i);
         for (int i1 = 0; i1<i ; i1++){
             Employee emp = (Employee) employeeList.get(i1);
             int empId = emp.getId();
             System.out.println("ID " + empId);
-            System.out.println(employeeList.get(i1));
 
 
             Methods assignment = new Methods();
             System.out.println("P= " + projectId + " E= " + empId);
-            assignment.assign(projectId,empId);
+
+            if (assignment.employeeExist(projectId, empId)){
+                System.out.println("Employee already assigned to the project");
+
+            }
+
+            else {
+                System.out.println("Employee Assigned");
+                assignment.assign(projectId,empId);
+                assignment.sendMail(projectId,empId);
+            }
+
 
 
 
         }
+
+
+
+
 
 
 
@@ -102,7 +124,12 @@ public class AssignController implements Initializable{
                 .graphic(null)
                 .hideAfter(Duration.seconds(5))
                 .position(Pos.CENTER);
+
         employeeAddedNotification.showInformation();
+
+
+
+
 
 
 
@@ -113,6 +140,10 @@ public class AssignController implements Initializable{
 
     }
 
+    public void initProID(Integer projectId){
+        this.projectId = projectId;
+        System.out.println("Project ID received from asd" + projectId);
+    }
 
 
 

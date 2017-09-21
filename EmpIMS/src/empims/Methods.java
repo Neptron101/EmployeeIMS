@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 
 import javax.xml.soap.Text;
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * Created by Sarah Fromming on 16/08/2017.
@@ -155,6 +157,53 @@ public class Methods {
 
     }
 
+    public void getProjectRowData(TableView tableView, Label label, ListView listView) throws SQLException {
+        listView.getItems().clear();
+        Project project = (Project) tableView.getSelectionModel().getSelectedItem();
+        int id = project.getProjectId();
+        System.out.println("id=" + id);
+
+        Employee employee = new Employee();
+
+        Connection connection = dc.Connect();
+
+
+        //String sql = "SELECT * FROM Assignment WHERE ProjectId = " + id ;
+        String sql = "select assignment.*,employee.* from assignment, employee\n" +
+                "where assignment.EmployeeID = employee.ID\n" +
+                "and assignment.ProjectID = " + id;
+
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()){
+            int empId = resultSet.getInt("EmployeeID") ;
+            String fName = resultSet.getString("FirstName");
+            String lName = resultSet.getString("LastName");
+            System.out.println(empId);
+
+            /*
+            employee.setId(empId + 1 );
+            ObservableList <Employee> EmployeeData = getEmpData();
+            String fName = String.valueOf(EmployeeData.get(empId).getFirstName());
+            String lName = String.valueOf(EmployeeData.get(empId).getLastName());
+            */
+
+            String list = empId + ") " + fName + " " + lName;
+            listView.getItems().add(list);
+
+        }
+
+
+
+
+
+
+    }
+
 
 
     public void close(Label lbl) {
@@ -226,10 +275,10 @@ public class Methods {
     public void assign (int projectId, int employeeId) throws SQLException {
         String sql = "INSERT INTO Assignment (EmployeeID, ProjectId) VALUES (?,?);";
         System.out.println("P = " + projectId + "E = " +employeeId);
-        System.out.println("1");
+
         dc = new DbConnection();
         Connection connection =dc.Connect();
-        System.out.println("2");
+
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setInt(1, employeeId);
@@ -245,7 +294,186 @@ public class Methods {
 
     }
 
+
+
     public void addNew() {
+
+    }
+
+    public void sendMail(Integer projectId, int empId) throws SQLException{
+        String sql = "select Email from employee where ID = " + empId;
+
+        dc = new DbConnection();
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()){
+            String email = resultSet.getString("Email");
+            System.out.println(email);
+
+            SendMail sendMail = new SendMail();
+            sendMail.sendMail(email, projectId);
+
+        }
+
+
+
+
+
+
+    }
+
+    public boolean employeeExist(int projectId, int employeeId) throws SQLException {
+        String sql = "select * from assignment where ProjectID = "+ projectId + " and EmployeeID = " + employeeId;
+
+        dc = new DbConnection();
+        dc.Connect();
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()){
+            return true;
+        }
+
+
+        return false;
+    }
+
+    public void fillReport(LocalDate date, Integer projId, String title, String description) throws SQLException {
+        String sql;
+
+        String sql1 = "INSERT INTO Report (report.Report_Date ,report.Title, report.Description, report.Proj_ID) VALUES (?,?,?,?);";
+
+        String sql2 = "UPDATE Report " +
+                "SET report.Report_Date = ?, report.Title = ? , report.Description = ?" +
+                "WHERE report.Proj_ID = ? ;";
+
+
+        if (reportExists(projId)){
+            sql = sql2;
+        }
+        else {
+            sql = sql1;
+        }
+
+
+        Date sDate = Date.valueOf(date);
+        System.out.println("Report Filling");
+        System.out.println(sDate);
+        System.out.println(projId);
+        System.out.println(title);
+        System.out.println(description);
+
+        dc = new DbConnection();
+        Connection connection =dc.Connect();
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        preparedStatement.setString(1, String.valueOf(sDate));
+        preparedStatement.setString(2, title);
+        preparedStatement.setString(3, description);
+        preparedStatement.setInt(4,projId);
+
+        System.out.println(sql);
+        preparedStatement.execute();
+
+
+    }
+
+    public boolean reportExists(int projectId) throws SQLException {
+        String sql = "SELECT * From Report WHERE Proj_ID =" + projectId;
+
+        dc = new DbConnection();
+
+        dc.Connect();
+
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()) {
+            return true;
+
+        }
+
+        return false;
+
+    }
+
+    public void forgotPassword(int empId) throws SQLException {
+        String sql = "select login.Password,employee.Email " +
+                "from login,employee " +
+                "where login.EmpID = employee.ID and employee.ID = " + empId;
+
+
+        dc = new DbConnection();
+        dc.Connect();
+
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()){
+            String email = resultSet.getString(2);
+            String password = resultSet.getString(1);
+
+            System.out.println("e= " + email+ " id= " + password  );
+
+            SendMail sendMail = new SendMail();
+
+            sendMail.sendMailForgotPassword(email,password);
+
+        }
+
+
+
+    }
+
+
+    public ArrayList<String> retrieveReport(Integer projId) throws SQLException {
+        String sql = "SELECT * from Report where Proj_ID = " + projId;
+
+        ArrayList<String> report = new ArrayList<>();
+
+        dc = new DbConnection();
+        dc.Connect();
+
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()){
+            String projectID = resultSet.getString(4);
+            String title = resultSet.getString(2);
+            String description = resultSet.getString(3);
+            String date = resultSet.getString(5);
+
+            report.add(projectID);
+            report.add(date);
+            report.add(title);
+            report.add(description);
+
+
+
+        }
+        return report;
 
     }
 }

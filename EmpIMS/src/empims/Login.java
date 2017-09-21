@@ -4,14 +4,14 @@ package empims;
  */
 
 import javafx.beans.property.*;
-//import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 public class Login {
     private final IntegerProperty EmpID = new SimpleIntegerProperty(this, "EmpID");
     public IntegerProperty EmpIDProperty() {
         return EmpID;
     }
-    //@NotNull
+    @NotNull
     public final Integer getEmpID() { return EmpIDProperty().get(); }
     public final void setEmpID(Integer EmpID) {
         EmpIDProperty().set(EmpID);

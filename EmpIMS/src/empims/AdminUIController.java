@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -97,6 +98,24 @@ public class AdminUIController implements Initializable {
     @FXML
     private MenuItem modify;
 
+    @FXML
+    private ListView employeeListView;
+
+    @FXML
+    private Label projectStatus;
+
+    @FXML
+    private Button assignBtn;
+
+    @FXML
+    private Button writeReportBtn;
+
+    @FXML
+    private Text empLabel;
+
+
+
+
 
     private Methods fill;
     private DbConnection db;
@@ -110,6 +129,7 @@ public class AdminUIController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+
         fill = new Methods();
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
         fill.initializeP(projectIdCol,projectTitleCol, ProjectTbl, txtSearchP);
@@ -117,12 +137,37 @@ public class AdminUIController implements Initializable {
                 SelectionMode.MULTIPLE
         );
 
+        assignBtn.setDisable(true);
+        writeReportBtn.setDisable(true);
     }
 
     public Integer projectId(){
         Project project= ProjectTbl.getSelectionModel().getSelectedItem();
         Integer projectId = project.getProjectId();
         return projectId;
+
+    }
+
+    public void getProjectRowData() throws SQLException {
+        System.out.println("call");
+        fill.getProjectRowData(ProjectTbl, projectStatus, employeeListView);
+        assignBtn.setDisable(false);
+
+        if (fill.reportExists(ProjectTbl.getSelectionModel().getSelectedItem().getProjectId())){
+            writeReportBtn.setText("View Report");
+            writeReportBtn.setDisable(false);
+
+        }
+        else if (employeeListView.getItems().isEmpty()){
+            writeReportBtn.setDisable(true);
+            empLabel.setText("No Employees assigned to this Project Yet");
+        }
+
+        else {
+            writeReportBtn.setDisable(false);
+            writeReportBtn.setText("Write Report");
+        }
+
 
     }
 
@@ -220,17 +265,23 @@ public class AdminUIController implements Initializable {
     public void handleAssignBtnAction() throws IOException{
         System.out.println("Assign Button Clicked");
 
+
         Project project= ProjectTbl.getSelectionModel().getSelectedItem();
         projectId = project.getProjectId();
 
         System.out.println("Project ID sent = " + projectId);
 
-
+        Project p = new Project();
+        p.setProId(projectId);
 
         FXMLLoader assignLoader = new FXMLLoader(getClass().getResource("Assign.fxml"));
 
 
         Parent root =  assignLoader.load();
+
+        //Pass project Id to another window
+        AssignController controller = assignLoader.<AssignController>getController();
+        controller.initProID(projectId);
 
         Stage stage = new Stage();
         Scene scene = new Scene(root);
@@ -242,11 +293,40 @@ public class AdminUIController implements Initializable {
 
     }
 
-    public Integer getProjectId(){
-        System.out.println("TEST" + projectId);
-        return projectId;
+    @FXML
+    public void handleWriteReportBtnAction() throws SQLException {
+        System.out.println("Report btn Clicked");
+        Project project= ProjectTbl.getSelectionModel().getSelectedItem();
+        projectId = project.getProjectId();
+
+
+
+        System.out.println("Project Id sent to write report = " + projectId);
+
+        FXMLLoader reportLoader = new FXMLLoader(getClass().getResource("ReportUI.fxml"));
+
+
+        Parent root = null;
+        try {
+            root = reportLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Pass project Id to another window
+        ReportUIController controller = reportLoader.<ReportUIController>getController();
+        controller.initProID(projectId);
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Write Report");
+        stage.setScene(scene);
+        stage.show();
 
 
     }
+
+
 }
 
