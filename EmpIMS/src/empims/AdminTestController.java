@@ -20,7 +20,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AdminUIController implements Initializable {
+public class AdminTestController implements Initializable {
 
     @FXML
     private MenuItem close;
@@ -102,7 +102,13 @@ public class AdminUIController implements Initializable {
     private ListView employeeListView;
 
     @FXML
+    private ListView projectListView;
+
+    @FXML
     private Label projectStatus;
+
+    @FXML
+    private Label employeeStatus;
 
     @FXML
     private Button assignBtn;
@@ -147,6 +153,9 @@ public class AdminUIController implements Initializable {
 
     @FXML
     private TabPane tabPane;
+
+    @FXML
+    private Text projLabel;
 
 
 
@@ -214,7 +223,18 @@ public class AdminUIController implements Initializable {
 
     }
 
-    public void getRowData() {
+    public void getRowData() throws SQLException {
+        System.out.println("call");
+        fill.getEmployeeRowData(EmployeeTbl, projectListView);
+
+        if (projectListView.getItems().isEmpty()){
+            //writeReportBtn.setDisable(true);
+            projLabel.setText("No Projects assigned to this Employee Yet");
+        } else {
+            projLabel.setText("Projects assigned to:");
+        }
+
+        txtDesc.setWrapText(true);
         fill.getRowData(EmployeeTbl, lblID, txtFirstName, txtLastName, txtEmail, txtPhone, txtPosition);
         delete.setDisable(false);
         modify.setDisable(false);

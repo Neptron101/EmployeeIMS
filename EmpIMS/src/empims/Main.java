@@ -9,9 +9,15 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.*;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import sun.awt.image.ToolkitImage;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -22,7 +28,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
-
+        
         Scene scene = new Scene(root);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.getIcons().add(new Image("/empims/images/Logo.png"));
@@ -36,5 +42,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+    
 }

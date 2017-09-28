@@ -50,10 +50,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void handlelogInAction() throws IOException, SQLException {
-        if (txtUser.getText().isEmpty() || txtPassword.getText().isEmpty()) {
-            invalid_lbl.setWrapText(true);
-            invalid_lbl.setText("Please fill out all fields.");
-        } else if (isValidCredentials()) {
+        if (isValidCredentials()) {
             Stage loginStage = (Stage) btnLogin.getScene().getWindow();
             if (admin == true) {
                 System.out.println("Admin Log In...");
@@ -85,7 +82,6 @@ public class FXMLDocumentController implements Initializable {
             txtPassword.clear();
             invalid_lbl.setText("Sorry, invalid credentials.");
         }
-
     }
 
     private boolean isValidCredentials() throws SQLException {
@@ -109,9 +105,9 @@ public class FXMLDocumentController implements Initializable {
 
             //while (rs2.next()) {
             System.out.println(rs2.getInt("Role"));
-            if ((rs2.getInt("Role") == 1) || (rs2.getInt("Role") == 2)) {
-                admin = true;
-            }
+                if ((rs2.getInt("Role") == 1) || (rs2.getInt("Role") == 2)) {
+                    admin = true;
+                }
             //}
             let_in = true;
         }

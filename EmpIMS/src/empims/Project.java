@@ -4,22 +4,24 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-//import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by Bikin Maharjan on 19/08/2017.
  */
 public class Project {
+    int proId;
     //
     private final IntegerProperty projectId = new SimpleIntegerProperty(this, "projectId");
     public IntegerProperty projectIdProperty() {
         return projectId;
     }
-    //@NotNull
+    @NotNull
     public final Integer getProjectId() {return projectIdProperty().get();}
     public final void setProjectId(Integer projectId) {
         projectIdProperty().set(projectId);
     }
+
 
     private final StringProperty projectTitle = new SimpleStringProperty(this, "projectTitle");
     public StringProperty projectTitleProperty() {
@@ -47,5 +49,13 @@ public class Project {
         setProjectDesc(projDesc);
     }
 
+    public void setProId(int i){
+        System.out.println("Set" + i);
+        proId = i;
+    }
+    public int getProId(){
+        System.out.println(proId);
+        return proId;
+    }
 
 }

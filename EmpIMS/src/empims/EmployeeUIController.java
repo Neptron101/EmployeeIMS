@@ -5,11 +5,14 @@ import javafx.collections.*;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.sql.*;
@@ -68,6 +71,11 @@ public class EmployeeUIController implements Initializable {
     @FXML
     private TextField txtSearchP;
 
+    @FXML
+    private ListView employeeListView;
+
+    @FXML
+    private Label projectStatus;
 
     @FXML
     private MenuItem close;
@@ -79,6 +87,8 @@ public class EmployeeUIController implements Initializable {
     private Label lblIDP;
 
     private Methods fill;
+
+    private Integer projectId;
 
 
     @Override
@@ -93,13 +103,47 @@ public class EmployeeUIController implements Initializable {
         fill.getRowData(EmployeeTbl,lblID,txtFirstName,txtLastName,txtEmail,txtPhone,txtPosition);
     }
 
-    public void getRowDataP() {
+    public void getRowDataP() throws SQLException {
         txtDesc.setWrapText(true);
         fill.getRowDataP(ProjectTbl, lblIDP,txtTitle,txtDesc);
+        fill.getProjectRowData(ProjectTbl, projectStatus, employeeListView);
     }
 
     public void close() {
         fill.close(lblID);
+    }
+
+    public void handleWriteReportBtnAction() throws SQLException {
+        System.out.println("Report btn Clicked");
+        Project project= ProjectTbl.getSelectionModel().getSelectedItem();
+        projectId = project.getProjectId();
+
+
+
+        System.out.println("Project Id sent to write report = " + projectId);
+
+        FXMLLoader reportLoader = new FXMLLoader(getClass().getResource("ReportUI.fxml"));
+
+
+        Parent root = null;
+        try {
+            root = reportLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Pass project Id to another window
+        ReportUIController controller = reportLoader.<ReportUIController>getController();
+        controller.initProID(projectId);
+
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+
+        stage.setTitle("Write Report");
+        stage.setScene(scene);
+        stage.show();
+
+
     }
 }
 

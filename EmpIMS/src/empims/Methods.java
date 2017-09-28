@@ -1,6 +1,5 @@
 package empims;
 
-import javafx.beans.binding.Bindings;
 import javafx.collections.*;
 import javafx.collections.transformation.*;
 import javafx.scene.control.*;
@@ -8,8 +7,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-import javax.naming.Binding;
+import javax.xml.soap.Text;
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -17,7 +18,6 @@ import java.util.Optional;
  */
 public class Methods {
     public ObservableList<Employee> EmpData;
-
     public ObservableList<Project> ProjectData;
 
     public DbConnection dc;
@@ -42,29 +42,27 @@ public class Methods {
         return EmpData;
     }
 
-	public ObservableList<Project> getProjectData(){
+    public ObservableList<Project> getProjectData() {
         dc = new DbConnection();
-        try{
+        try {
             Connection connection = dc.Connect();
             ProjectData = FXCollections.observableArrayList();
 
-            //ResultSet resultSet = connection.createStatement().executeQuery("SELECT Projects.ID, Projects.Title FROM Projects;");
             ResultSet resultSet = connection.createStatement().executeQuery("SELECT * FROM Projects");
 
-            while(resultSet.next()){
-                ProjectData.add(new Project(resultSet.getInt("ID"), resultSet.getString("Title"),resultSet.getString("Description")));
+            while (resultSet.next()) {
+                ProjectData.add(new Project(resultSet.getInt("ID"), resultSet.getString("Title"), resultSet.getString("Description")));
 
             }
             resultSet.close();
             connection.close();
-        }
-        catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Error" + e);
         }
         return ProjectData;
 
     }
-	
+
     public void filterData(TextField search, TableView table) {
         FilteredList<Employee> filteredData = new FilteredList<>(EmpData, p -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -79,15 +77,14 @@ public class Methods {
                     return true;
                 } else if (Employee.getLastName().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (Employee.getId().toString().contains(lowerCaseFilter)) {
+                } else if (Employee.getId().equals(lowerCaseFilter)) {
                     return true;
-                }
+                } else {
                 Label text = new Label();
                 text.setWrapText(true);
                 text.setText("The employee you searched for could not be found. Please check the information you entered and try again.");
-                //"The employee you searched for could not be found. Please check the information you entered and try again."
                 table.setPlaceholder(text);
-                return false;
+                return false; }
             });
         });
 
@@ -97,33 +94,37 @@ public class Methods {
 
         table.setItems(sortedData);
     }
-	
-	public void filterDataP(TextField searchP, TableView tableP){
-        FilteredList<Project> projectFilteredList = new FilteredList<>(ProjectData, project -> true);
+
+    public void filterDataP(TextField searchP, TableView tableP) {
+        FilteredList<Project> projectFilteredList = new FilteredList<>(ProjectData, p -> true);
         searchP.textProperty().addListener((observable, oldValue, newValue) -> {
-            projectFilteredList.setPredicate(Project ->{
+            projectFilteredList.setPredicate(Project -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
 
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if (Project.getProjectId().equals(lowerCaseFilter)){
+                if (Project.getProjectId().equals(lowerCaseFilter)) {
+                    return true;
+                } else if (Project.getProjectTitle().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
-                else if (Project.getProjectTitle().toLowerCase().contains(lowerCaseFilter)){
-                    return true;
-                }
+                Label text = new Label();
+                text.setWrapText(true);
+                text.setText("The project you searched for could not be found. Please check the information you entered and try again.");
+                tableP.setPlaceholder(text);
                 return false;
             });
 
         });
 
-        SortedList<Project> sortedData = new SortedList<Project>(projectFilteredList);
+        SortedList<Project> sortedData = new SortedList<>(projectFilteredList);
         sortedData.comparatorProperty().bind(tableP.comparatorProperty());
         tableP.setItems(sortedData);
 
     }
+
 
     public void initialize(TableColumn id, TableColumn first, TableColumn last, TableView table, TextField search) {
 
@@ -138,8 +139,8 @@ public class Methods {
 
         filterData(search, table);
     }
-	
-	public void initializeP(TableColumn projectId, TableColumn projectTitle, TableView projectTable, TextField search){
+
+    public void initializeP(TableColumn projectId, TableColumn projectTitle, TableView projectTable, TextField search) {
 
         ObservableList<Project> ProjectData = getProjectData();
 
@@ -160,14 +161,90 @@ public class Methods {
         email.setText(employee.getEmail());
         phone.setText(employee.getPhone());
         pos.setText(employee.getRole());
+
     }
 
-    public  void getRowDataP(TableView table, Label lbl, TextField title, TextArea desc) {
-	    Project project = (Project) table.getSelectionModel().getSelectedItem();
-	    lbl.setText(String.valueOf(project.getProjectId()));
-	    title.setText(project.getProjectTitle());
-	    desc.setText(project.getProjectDesc());
+    public void getRowDataP(TableView table, Label lbl, TextField title, TextArea desc) {
+        Project project = (Project) table.getSelectionModel().getSelectedItem();
+        lbl.setText(String.valueOf(project.getProjectId()));
+        title.setText(project.getProjectTitle());
+        desc.setText(project.getProjectDesc());
     }
+
+    public void getEmployeeRowData(TableView tableView, ListView listView) throws SQLException {
+        listView.getItems().clear();
+        Employee employee = (Employee) tableView.getSelectionModel().getSelectedItem();
+        int id = employee.getId();
+        System.out.println("id=" + id);
+
+        Connection connection = dc.Connect();
+
+
+        //String sql = "SELECT * FROM Assignment WHERE ProjectId = " + id ;
+        String sql = "select distinct * from assignment \n" +
+                "join employee on (employee.ID = assignment.EmployeeID)\n" +
+                "join projects on (projects.ID = assignment.ProjectID)\n" +
+                "where employee.ID = " + id;
+
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()) {
+            int projId = resultSet.getInt("ProjectID");
+            String title = resultSet.getString("Title");
+            System.out.println(projId);
+
+            String list = projId + ") " + title;
+            listView.getItems().add(list);
+
+        }
+    }
+
+
+    public void getProjectRowData(TableView tableView, Label label, ListView listView) throws SQLException {
+        listView.getItems().clear();
+        Project project = (Project) tableView.getSelectionModel().getSelectedItem();
+        int id = project.getProjectId();
+        System.out.println("id=" + id);
+
+        Employee employee = new Employee();
+
+        Connection connection = dc.Connect();
+
+
+        //String sql = "SELECT * FROM Assignment WHERE ProjectId = " + id ;
+        String sql = "select assignment.*,employee.* from assignment, employee\n" +
+                "where assignment.EmployeeID = employee.ID\n" +
+                "and assignment.ProjectID = " + id;
+
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()) {
+            int empId = resultSet.getInt("EmployeeID");
+            String fName = resultSet.getString("FirstName");
+            String lName = resultSet.getString("LastName");
+            System.out.println(empId);
+
+            /*
+            employee.setId(empId + 1 );
+            ObservableList <Employee> EmployeeData = getEmpData();
+            String fName = String.valueOf(EmployeeData.get(empId).getFirstName());
+            String lName = String.valueOf(EmployeeData.get(empId).getLastName());
+            */
+
+            String list = empId + ") " + fName + " " + lName;
+            listView.getItems().add(list);
+
+        }
+    }
+
 
     public void close(Label lbl) {
         Stage app = (Stage) lbl.getScene().getWindow();
@@ -224,11 +301,11 @@ public class Methods {
         pos.setVisible(false);
     }
 
-    public void delete(int id, Label lbl, TextField first, TextField last, TextField email, TextField phone, TextField pos, TableView table) {
+    public void delete(int id, Label lbl, TextField First, TextField Last, TableView table) {
         Employee employee = (Employee) table.getSelectionModel().getSelectedItem();
         Alert alert2 = new Alert(Alert.AlertType.CONFIRMATION);
         alert2.setTitle("Confirmation");
-        alert2.setHeaderText("Please confirm the deletion of " + employee.getFirstName() + " " + employee.getLastName());
+        alert2.setHeaderText("Please confirm the deletion of " + employee.getFirstName() + " " + employee.getLastName() + "");
         alert2.setContentText("Are you sure you want to delete this employee?");
 
         Optional<ButtonType> result = alert2.showAndWait();
@@ -249,13 +326,8 @@ public class Methods {
             alert.showAndWait();
 
             lbl.setText("");
-            first.setText("");
-            last.setText("");
-            email.setText("");
-            phone.setText("");
-            pos.setText("");
-        } else {
-
+            First.setText("");
+            Last.setText("");
         }
     }
 
@@ -318,32 +390,203 @@ public class Methods {
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
 
-        pstmt.setString(1,title.getText());
+        pstmt.setString(1, title.getText());
         pstmt.setString(2, desc.getText());
         pstmt.setString(3, label.getText());
         pstmt.executeUpdate();
         conn.close();
     }
-	
-	public void assign (int projectId, int employeeId) throws SQLException {
+
+    public void assign(int projectId, int employeeId) throws SQLException {
         String sql = "INSERT INTO Assignment (EmployeeID, ProjectId) VALUES (?,?);";
-        System.out.println("P = " + projectId + "E = " +employeeId);
-        System.out.println("1");
+        System.out.println("P = " + projectId + "E = " + employeeId);
+
         dc = new DbConnection();
-        Connection connection =dc.Connect();
-        System.out.println("2");
+        Connection connection = dc.Connect();
+
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setInt(1, employeeId);
-            preparedStatement.setInt(2, projectId);
-            System.out.println(sql);
-            preparedStatement.executeUpdate();
-
-
+        preparedStatement.setInt(1, employeeId);
+        preparedStatement.setInt(2, projectId);
+        System.out.println(sql);
+        preparedStatement.executeUpdate();
 
 
         System.out.println("Assigned");
 
 
     }
+
+
+    public void sendMail(Integer projectId, int empId) throws SQLException {
+        String sql = "select Email from employee where ID = " + empId;
+
+        dc = new DbConnection();
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()) {
+            String email = resultSet.getString("Email");
+            System.out.println(email);
+
+            SendMail sendMail = new SendMail();
+            sendMail.sendMail(email, projectId);
+
+        }
+
+
+    }
+
+    public boolean employeeExist(int projectId, int employeeId) throws SQLException {
+        String sql = "select * from assignment where ProjectID = " + projectId + " and EmployeeID = " + employeeId;
+
+        dc = new DbConnection();
+        dc.Connect();
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()) {
+            return true;
+        }
+
+
+        return false;
+    }
+
+    public void fillReport(LocalDate date, Integer projId, String title, String description) throws SQLException {
+        String sql;
+
+        String sql1 = "INSERT INTO Report (report.Report_Date ,report.Title, report.Description, report.Proj_ID) VALUES (?,?,?,?);";
+
+        String sql2 = "UPDATE Report " +
+                "SET report.Report_Date = ?, report.Title = ? , report.Description = ?" +
+                "WHERE report.Proj_ID = ? ;";
+
+
+        if (reportExists(projId)) {
+            sql = sql2;
+        } else {
+            sql = sql1;
+        }
+
+
+        Date sDate = Date.valueOf(date);
+        System.out.println("Report Filling");
+        System.out.println(sDate);
+        System.out.println(projId);
+        System.out.println(title);
+        System.out.println(description);
+
+        dc = new DbConnection();
+        Connection connection = dc.Connect();
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        preparedStatement.setString(1, String.valueOf(sDate));
+        preparedStatement.setString(2, title);
+        preparedStatement.setString(3, description);
+        preparedStatement.setInt(4, projId);
+
+        System.out.println(sql);
+        preparedStatement.execute();
+
+
+    }
+
+    public boolean reportExists(int projectId) throws SQLException {
+        String sql = "SELECT * From Report WHERE Proj_ID =" + projectId;
+
+        dc = new DbConnection();
+
+        dc.Connect();
+
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()) {
+            return true;
+
+        }
+
+        return false;
+
+    }
+
+    public void forgotPassword(int empId) throws SQLException {
+        String sql = "select login.Password,employee.Email " +
+                "from login,employee " +
+                "where login.EmpID = employee.ID and employee.ID = " + empId;
+
+
+        dc = new DbConnection();
+        dc.Connect();
+
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()) {
+            String email = resultSet.getString(2);
+            String password = resultSet.getString(1);
+
+            System.out.println("e= " + email + " id= " + password);
+
+            SendMail sendMail = new SendMail();
+
+            sendMail.sendMailForgotPassword(email, password);
+
+        }
+
+
+    }
+
+
+    public ArrayList<String> retrieveReport(Integer projId) throws SQLException {
+        String sql = "SELECT * from Report where Proj_ID = " + projId;
+
+        ArrayList<String> report = new ArrayList<>();
+
+        dc = new DbConnection();
+        dc.Connect();
+
+        Connection connection = dc.Connect();
+
+        Statement stmt = connection.createStatement();
+
+        ResultSet resultSet = stmt.executeQuery(sql);
+
+
+        while (resultSet.next()) {
+            String projectID = resultSet.getString(4);
+            String title = resultSet.getString(2);
+            String description = resultSet.getString(3);
+            String date = resultSet.getString(5);
+
+            report.add(projectID);
+            report.add(date);
+            report.add(title);
+            report.add(description);
+
+
+        }
+        return report;
+
+    }
+
+
 }

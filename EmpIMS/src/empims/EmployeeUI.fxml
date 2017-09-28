@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -19,14 +21,16 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="66.0" prefWidth="599.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="empims.EmployeeUIController">
    <children>
       <TabPane tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Employee">
-            <content>
-              <AnchorPane>
+         <tabs>
+            <Tab text="Employee">
+               <content>
+                  <AnchorPane>
                      <children>
                         <VBox prefHeight="478.0" prefWidth="602.0">
                            <children>
@@ -101,7 +105,7 @@
                                                 <Insets top="5.0" />
                                              </HBox.margin>
                                           </Label>
-                                          <Label fx:id="lblID1" layoutX="15.0" layoutY="20.0">
+                                          <Label fx:id="lblID" layoutX="15.0" layoutY="20.0">
                                              <HBox.margin>
                                                 <Insets top="5.0" />
                                              </HBox.margin>
@@ -242,11 +246,11 @@
                         </BorderPane>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Project">
-            <content>
-              <AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Project">
+               <content>
+                  <AnchorPane>
                      <children>
                         <VBox prefHeight="487.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
@@ -265,13 +269,13 @@
                               <VBox BorderPane.alignment="CENTER">
                                  <children>
                                     <MenuBar>
-                                      <menus>
-                                        <Menu mnemonicParsing="false" text="File">
-                                          <items>
-                                            <MenuItem fx:id="close" mnemonicParsing="false" onAction="#close" text="Close" />
-                                          </items>
-                                        </Menu>
-                                      </menus>
+                                       <menus>
+                                          <Menu mnemonicParsing="false" text="File">
+                                             <items>
+                                                <MenuItem fx:id="close" mnemonicParsing="false" onAction="#close" text="Close" />
+                                             </items>
+                                          </Menu>
+                                       </menus>
                                     </MenuBar>
                                     <HBox spacing="10.0">
                                        <children>
@@ -291,10 +295,10 @@
                            </top>
                            <left>
                               <TableView fx:id="ProjectTbl" onMouseClicked="#getRowDataP" BorderPane.alignment="CENTER">
-                                <columns>
+                                 <columns>
                                     <TableColumn fx:id="idColP" prefWidth="40.0" text="ID" />
-                                  <TableColumn fx:id="titleCol" prefWidth="206.0" text="Title" />
-                                </columns>
+                                    <TableColumn fx:id="titleCol" prefWidth="206.0" text="Title" />
+                                 </columns>
                                  <BorderPane.margin>
                                     <Insets left="10.0" />
                                  </BorderPane.margin>
@@ -313,73 +317,59 @@
                            <center>
                               <VBox prefHeight="400.0" prefWidth="340.0" BorderPane.alignment="CENTER">
                                  <children>
-                                    <HBox spacing="10.0">
-                                       <children>
-                                          <Label text="ProjectID">
-                                             <HBox.margin>
-                                                <Insets top="5.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                          <Label fx:id="lblID" layoutX="15.0" layoutY="20.0">
-                                             <HBox.margin>
-                                                <Insets top="5.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="30.0" />
-                                       </VBox.margin>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </HBox>
-                                    <HBox spacing="10.0">
-                                       <children>
-                                          <Label text="Title">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <HBox.margin>
-                                                <Insets top="5.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                          <TextField fx:id="txtTitle" editable="false" prefWidth="180.0" HBox.hgrow="ALWAYS" />
-                                       </children>
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </HBox>
-                                    <HBox layoutX="15.0" layoutY="15.0" spacing="10.0">
-                                       <children>
-                                          <Label text="Description">
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <HBox.margin>
-                                                <Insets top="5.0" />
-                                             </HBox.margin>
-                                          </Label>
-                                          <TextArea fx:id="txtDesc" prefHeight="269.0" prefWidth="252.0" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </VBox.margin>
-                                    </HBox>
+                                    <TabPane fx:id="tabPane" prefHeight="430.0" prefWidth="277.0" tabClosingPolicy="UNAVAILABLE">
+                                       <tabs>
+                                          <Tab id="projectDescription" fx:id="TabProDesc" text="Project Description">
+                                             <content>
+                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                                   <children>
+                                                      <Label layoutX="120.0" layoutY="14.0" text="Project" />
+                                                      <Label fx:id="lblIDP" layoutX="162.0" layoutY="14.0" />
+                                                      <Label layoutX="3.0" layoutY="53.0" text="Title" />
+                                                      <Label layoutX="5.0" layoutY="101.0" text="Descrition" />
+                                                      <TextField fx:id="txtTitle" editable="false" layoutX="57.0" layoutY="49.0" prefHeight="25.0" prefWidth="209.0" />
+                                                      <TextArea fx:id="txtDesc" editable="false" layoutX="57.0" layoutY="101.0" prefHeight="242.0" prefWidth="208.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </Tab>
+                                          <Tab id="employeeAssigned" text="Employee Assigned">
+                                             <content>
+                                                <VBox prefHeight="430.0" prefWidth="278.0">
+                                                   <children>
+                                                      <Text fx:id="empLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Employees in the Project" textAlignment="CENTER">
+                                                         <VBox.margin>
+                                                            <Insets top="8.0" />
+                                                         </VBox.margin>
+                                                         <font>
+                                                            <Font name="System Bold" size="12.0" />
+                                                         </font>
+                                                      </Text>
+                                                      <ListView fx:id="employeeListView" prefHeight="398.0" prefWidth="277.0" />
+                                                      <HBox prefHeight="93.0" prefWidth="277.0" spacing="20.0">
+                                                         <children>
+                                                            <Label fx:id="projectStatus" prefHeight="17.0" prefWidth="85.0" />
+                                                            <Button fx:id="writeReportBtn" mnemonicParsing="false" onAction="#handleWriteReportBtnAction" text="Write a Report" />
+                                                         </children>
+                                                         <VBox.margin>
+                                                            <Insets top="7.0" />
+                                                         </VBox.margin>
+                                                      </HBox>
+                                                   </children>
+                                                </VBox>
+                                             </content>
+                                          </Tab>
+                                       </tabs>
+                                    </TabPane>
                                  </children>
                               </VBox>
                            </center>
                         </BorderPane>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
+               </content>
+            </Tab>
+         </tabs>
       </TabPane>
    </children>
 </AnchorPane>
