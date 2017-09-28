@@ -239,9 +239,19 @@ public class AdminUIController implements Initializable {
         db = new DbConnection();
         try {
             Connection conn = db.Connect();
+            String sql = "INSERT INTO sql12175092.Employee VALUE ()";
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            pstmt.executeUpdate();
+            ResultSet rs2 = conn.createStatement().executeQuery("SELECT * FROM  sql12175092.employee ORDER by ID DESC LIMIT 1");
             // Execute query and store result in a resultset
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM sql12175092.Roles");
             roles = FXCollections.observableArrayList();
+            while ( rs2.next()){
+                System.out.println("Succesasd");
+                lblID.setText(rs2.getString("ID"));
+            }
+
             while (rs.next()) {
                 //get string from db,whichever way
                 roles.add(rs.getString("Role"));
@@ -311,6 +321,8 @@ public class AdminUIController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("The new record for " + txtTitle.getText() + " has been successfully created. The project ID is: " + lblIDP.getText());
         alert.showAndWait();
+
+
 
     }
 

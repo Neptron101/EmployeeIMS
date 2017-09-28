@@ -14,6 +14,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -267,6 +268,9 @@
                               </center>
                           </BorderPane>
                      </children>
+                     <effect>
+                        <Blend />
+                     </effect>
                   </AnchorPane>
             </content>
           </Tab>
@@ -290,7 +294,7 @@
                               </MenuBar>
                               <HBox prefHeight="33.0" prefWidth="596.0" spacing="10.0">
                                  <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Filter Table">
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter Table">
                                        <HBox.margin>
                                           <Insets left="5.0" top="5.0" />
                                        </HBox.margin>
@@ -320,7 +324,7 @@
                                                             <Font name="System Bold" size="12.0" />
                                                          </font>
                                                       </Text>
-                                                      <ListView fx:id="employeeListView" prefHeight="398.0" prefWidth="277.0" />
+                                                      <ListView fx:id="employeeListView" prefHeight="398.0" prefWidth="277.0" style="-fx-background-image:url('../empims/images/2.jpg')" />
                                                       <HBox prefHeight="93.0" prefWidth="277.0" spacing="20.0">
                                                          <children>
                                                             <Label fx:id="projectStatus" prefHeight="17.0" prefWidth="85.0" />

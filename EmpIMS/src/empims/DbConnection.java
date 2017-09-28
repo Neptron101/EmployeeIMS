@@ -17,8 +17,11 @@ public class DbConnection {
             /*String url = "jdbc:mysql://sql12.freemysqlhosting.net:3306/sql12175092?zeroDateTimeBehavior=convertToNull";
             String user = "sql12175092";
             String password = "IKiL6BaUyu";
+
             */
-            String url = "jdbc:mysql://localhost:3306/sql12175092";
+
+            String url = "jdbc:mysql://localhost:3306/sql12175092?verifyServerCertificate=false&useSSL=true";
+            //String url = "jdbc:mysql://192.168.43.242:3306/sql12175092?verifyServerCertificate=false&useSSL=true";
             String user = "root";
             String password = "Neptron101";
 
