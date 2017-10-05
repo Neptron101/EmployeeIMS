@@ -20,7 +20,7 @@ public class DbConnection {
             String url = "jdbc:mysql://localhost:3306/sql12175092?verifyServerCertificate=false&useSSL=true";
             //String url = "jdbc:mysql://192.168.43.215:3306/sql12175092?verifyServerCertificate=false&useSSL=true";
             String user = "root";
-            String password = "icq123SS";
+            String password = "Neptron101";
 
 
             Class.forName("com.mysql.jdbc.Driver");

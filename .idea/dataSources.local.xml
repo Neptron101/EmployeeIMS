@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="dataSourceStorageLocal">
-    <data-source name="Uni - Software Development" uuid="b67dbbb6-a7a5-4c26-a0b1-36bcf2c1f1a6">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
-      <introspection-schemas>*:sql12175092</introspection-schemas>
-    </data-source>
-  </component>
-</project>
