@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../jetbrains-annotations.jar!/" />
+          <root url="jar://E:/jetbrains-annotations.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -28,7 +28,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../controlsfx-8.40.13.jar!/" />
+          <root url="jar://E:/controlsfx-8.40.13.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -71,5 +71,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
