@@ -66,7 +66,7 @@ public class Methods {
     public void filterData(TextField search, TableView table) {
         FilteredList<Employee> filteredData = new FilteredList<>(EmpData, p -> true);
         search.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(Employee -> {
+            filteredData.setPredicate(Employee ->{
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
@@ -79,12 +79,13 @@ public class Methods {
                     return true;
                 } else if (Employee.getId().equals(lowerCaseFilter)) {
                     return true;
-                } else {
+                }
+                /*else {
                 Label text = new Label();
                 text.setWrapText(true);
                 text.setText("The employee you searched for could not be found. Please check the information you entered and try again.");
-                table.setPlaceholder(text);
-                return false; }
+                table.setPlaceholder(text);*/
+                return false;
             });
         });
 
@@ -96,9 +97,9 @@ public class Methods {
     }
 
     public void filterDataP(TextField searchP, TableView tableP) {
-        FilteredList<Project> projectFilteredList = new FilteredList<>(ProjectData, p -> true);
+        FilteredList<Project> projectFilteredList = new FilteredList<>(ProjectData, project -> true);
         searchP.textProperty().addListener((observable, oldValue, newValue) -> {
-            projectFilteredList.setPredicate(Project -> {
+            projectFilteredList.setPredicate(Project ->{
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
@@ -179,8 +180,6 @@ public class Methods {
 
         Connection connection = dc.Connect();
 
-
-        //String sql = "SELECT * FROM Assignment WHERE ProjectId = " + id ;
         String sql = "select distinct * from assignment \n" +
                 "join employee on (employee.ID = assignment.EmployeeID)\n" +
                 "join projects on (projects.ID = assignment.ProjectID)\n" +
@@ -214,8 +213,6 @@ public class Methods {
 
         Connection connection = dc.Connect();
 
-
-        //String sql = "SELECT * FROM Assignment WHERE ProjectId = " + id ;
         String sql = "select assignment.*,employee.* from assignment, employee\n" +
                 "where assignment.EmployeeID = employee.ID\n" +
                 "and assignment.ProjectID = " + id;
@@ -231,13 +228,6 @@ public class Methods {
             String fName = resultSet.getString("FirstName");
             String lName = resultSet.getString("LastName");
             System.out.println(empId);
-
-            /*
-            employee.setId(empId + 1 );
-            ObservableList <Employee> EmployeeData = getEmpData();
-            String fName = String.valueOf(EmployeeData.get(empId).getFirstName());
-            String lName = String.valueOf(EmployeeData.get(empId).getLastName());
-            */
 
             String list = empId + ") " + fName + " " + lName;
             listView.getItems().add(list);

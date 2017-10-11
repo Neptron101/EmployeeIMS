@@ -106,7 +106,7 @@ public class EmployeeUIController implements Initializable {
     public void getRowDataP() throws SQLException {
         txtDesc.setWrapText(true);
         fill.getRowDataP(ProjectTbl, lblIDP,txtTitle,txtDesc);
-        fill.getProjectRowData(ProjectTbl, projectStatus, employeeListView);
+        //fill.getProjectRowData(ProjectTbl, projectStatus, employeeListView);
     }
 
     public void close() {

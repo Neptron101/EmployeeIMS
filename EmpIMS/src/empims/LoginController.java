@@ -68,7 +68,7 @@ public class LoginController implements Initializable{
 
                 System.out.println("Admin Logged In!");
 
-                FXMLLoader adminLoader = new FXMLLoader(getClass().getResource("AdminUI.fxml"));
+                FXMLLoader adminLoader = new FXMLLoader(getClass().getResource("AdminTest.fxml"));
 
 
                 Parent root =  adminLoader.load();

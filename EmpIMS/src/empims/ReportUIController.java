@@ -2,8 +2,11 @@ package empims;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.util.Callback;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -106,6 +109,15 @@ public class ReportUIController implements Initializable{
         System.out.println(projId);
         System.out.println(title);
         System.out.println(description);
+
+        Notifications reportSavedNotification = Notifications.create()
+                .title("Report Saved")
+                .text("The changes made to the report has been saved")
+                .graphic(null)
+                .hideAfter(Duration.seconds(5))
+                .position(Pos.CENTER);
+
+        reportSavedNotification.showInformation();
 
     }
 
