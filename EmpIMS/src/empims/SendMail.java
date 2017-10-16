@@ -9,6 +9,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.management.Notification;
 
 public class SendMail {
 
@@ -80,6 +81,45 @@ public class SendMail {
             message.setSubject("Forgot Password? ");
             message.setText("Hi.,"
                     + "\n\n Your Password is " + pswrd);
+
+            Transport.send(message);
+
+            System.out.println("Done");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void sendNotification(String to, String subject, String desc){
+        System.out.println("Email address received to send mail= " + to);
+        System.out.println("Subject= " + subject);
+        System.out.println("Description= " + desc);
+
+        final String username = "bstestenterprise@gmail.com";
+        final String password = "BatmanSuperman";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, password);
+                    }
+                });
+
+        try {
+
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("bstestenterprise@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO,
+                    InternetAddress.parse(to));
+            message.setSubject(subject);
+            message.setText(desc);
 
             Transport.send(message);
 
