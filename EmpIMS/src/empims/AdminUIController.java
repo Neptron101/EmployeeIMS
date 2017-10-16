@@ -149,9 +149,6 @@ public class AdminUIController implements Initializable {
     @FXML
     private Tab TabProDesc;
 
-    @FXML
-    private TabPane tabPane;
-
 
     private Methods fill;
     private DbConnection db;
