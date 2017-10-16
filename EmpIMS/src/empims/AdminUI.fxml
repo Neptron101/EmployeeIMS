@@ -24,9 +24,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="520.0" prefWidth="596.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="empims.AdminUIController">
+<AnchorPane prefHeight="507.0" prefWidth="588.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="empims.AdminUIController">
     <children>
-      <TabPane prefHeight="520.0" prefWidth="596.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="507.0" prefWidth="596.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Employee">
             <content>
@@ -77,7 +77,7 @@
                                   </VBox>
                               </top>
                               <left>
-                                  <TableView fx:id="EmployeeTbl" onMouseClicked="#getRowData" prefHeight="370.0" prefWidth="249.0" BorderPane.alignment="CENTER">
+                                  <TableView fx:id="EmployeeTbl" onMouseClicked="#getRowData" BorderPane.alignment="CENTER">
                                       <columns>
                                           <TableColumn fx:id="idCol" prefWidth="40.0" text="ID" />
                                           <TableColumn fx:id="firstNameCol" prefWidth="97.0" text="First Name" />
@@ -89,17 +89,9 @@
                                   </TableView>
                               </left>
                               <bottom>
-                                  <HBox fillHeight="false" prefHeight="7.0" prefWidth="599.0" BorderPane.alignment="CENTER">
+                                  <HBox BorderPane.alignment="CENTER">
                                       <children>
-                                          <Label fx:id="lblReady" text="Ready">
-                                       <padding>
-                                          <Insets left="20.0" right="50.0" />
-                                       </padding></Label>
-                                    <Button fx:id="notifyBtn" mnemonicParsing="false" onAction="#handleNotifyBtnAction" prefHeight="5.0" prefWidth="85.0" text="Notify">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </Button>
+                                          <Label fx:id="lblReady" text="Ready" />
                                       </children>
                                       <padding>
                                           <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
@@ -282,7 +274,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="491.0" prefWidth="596.0">
+                        <VBox prefHeight="480.0" prefWidth="596.0">
                            <children>
                               <MenuBar>
                                 <menus>
@@ -308,7 +300,7 @@
                               </HBox>
                               <HBox prefHeight="456.0" prefWidth="596.0">
                                  <children>
-                                    <TableView fx:id="ProjectTbl" onMouseClicked="#getProjectRowData" prefHeight="448.0" prefWidth="320.0">
+                                    <TableView fx:id="ProjectTbl" onMouseClicked="#getProjectRowData" prefHeight="456.0" prefWidth="320.0">
                                       <columns>
                                         <TableColumn fx:id="projectIdCol" prefWidth="75.0" text="Project Id" />
                                         <TableColumn fx:id="projectTitleCol" prefWidth="231.0" text="Project Title" />
@@ -344,13 +336,11 @@
                                                             <Font name="System Bold" size="12.0" />
                                                          </font>
                                                       </Text>
-                                                      <ListView fx:id="employeeListView" prefHeight="417.0" prefWidth="277.0" />
+                                                      <ListView fx:id="employeeListView" prefHeight="398.0" prefWidth="277.0" />
                                                       <HBox prefHeight="93.0" prefWidth="277.0" spacing="20.0">
                                                          <children>
-                                                            <Button fx:id="assignBtn" mnemonicParsing="false" onAction="#handleAssignBtnAction" text="Assign">
-                                                               <HBox.margin>
-                                                                  <Insets left="40.0" />
-                                                               </HBox.margin></Button>
+                                                            <Label fx:id="projectStatus" prefHeight="17.0" prefWidth="85.0" />
+                                                            <Button fx:id="assignBtn" mnemonicParsing="false" onAction="#handleAssignBtnAction" text="Assign" />
                                                             <Button fx:id="writeReportBtn" mnemonicParsing="false" onAction="#handleWriteReportBtnAction" text="Write a Report" />
                                                          </children>
                                                          <VBox.margin>

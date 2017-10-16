@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="394.0" prefWidth="714.0" style="-fx-background-image: images\UI.jpg; -fx-background-color: blue;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="empims.SendMailController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="723.0" opacity="0.83" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/UI.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="subjectTF" layoutX="120.0" layoutY="14.0" prefHeight="25.0" prefWidth="560.0" promptText="Subject">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextArea fx:id="emailTA" layoutX="120.0" layoutY="58.0" prefHeight="284.0" prefWidth="560.0" promptText="Compose Email">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
+            <Button fx:id="sendMailBtn" layoutX="580.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleSendMailAction" prefHeight="25.0" prefWidth="100.0" text="Send" textFill="#331657">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Text fill="#eeeeee" layoutX="29.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Subject">
+               <font>
+                  <Font name="Marlett" size="23.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

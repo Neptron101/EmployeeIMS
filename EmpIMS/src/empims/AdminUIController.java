@@ -50,7 +50,7 @@ public class AdminUIController implements Initializable {
     private TableView<Project> ProjectTbl;
 
     @FXML
-    private TableColumn<Project, Integer> projectIdCol;
+    private  TableColumn<Project, Integer> projectIdCol;
 
     @FXML
     private TableColumn<Project, String> projectTitleCol;
@@ -143,11 +143,11 @@ public class AdminUIController implements Initializable {
     private Button btnUpdate;
 
     @FXML
-    private Button notifyBtn;
-
-
-    @FXML
     private Tab TabProDesc;
+
+
+
+
 
 
     private Methods fill;
@@ -165,18 +165,17 @@ public class AdminUIController implements Initializable {
 
         fill = new Methods();
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
-        fill.initializeP(projectIdCol, projectTitleCol, ProjectTbl, txtSearchP);
+        fill.initializeP(projectIdCol,projectTitleCol, ProjectTbl, txtSearchP);
         ProjectTbl.getSelectionModel().setSelectionMode(
                 SelectionMode.MULTIPLE
         );
 
         assignBtn.setDisable(true);
         writeReportBtn.setDisable(true);
-        notifyBtn.setDisable(true);
     }
 
-    public Integer projectId() {
-        Project project = ProjectTbl.getSelectionModel().getSelectedItem();
+    public Integer projectId(){
+        Project project= ProjectTbl.getSelectionModel().getSelectedItem();
         Integer projectId = project.getProjectId();
         return projectId;
 
@@ -187,22 +186,21 @@ public class AdminUIController implements Initializable {
         fill.getProjectRowData(ProjectTbl, projectStatus, employeeListView);
         assignBtn.setDisable(false);
 
-        if (fill.reportExists(ProjectTbl.getSelectionModel().getSelectedItem().getProjectId())) {
+        if (fill.reportExists(ProjectTbl.getSelectionModel().getSelectedItem().getProjectId())){
             writeReportBtn.setText("View Report");
             writeReportBtn.setDisable(false);
 
-        } else {
+        }
+        else {
             writeReportBtn.setDisable(false);
             writeReportBtn.setText("Write Report");
         }
 
-        if (employeeListView.getItems().isEmpty()) {
+        if (employeeListView.getItems().isEmpty()){
             writeReportBtn.setDisable(true);
-
             empLabel.setText("No Employees assigned to this Project Yet");
         } else {
             empLabel.setText("Employees assigned:");
-
         }
 
         txtDesc.setWrapText(true);
@@ -217,7 +215,6 @@ public class AdminUIController implements Initializable {
         fill.getRowData(EmployeeTbl, lblID, txtFirstName, txtLastName, txtEmail, txtPhone, txtPosition);
         delete.setDisable(false);
         modify.setDisable(false);
-        notifyBtn.setDisable(false);
     }
 
     public void getRowDataP() {
@@ -333,7 +330,7 @@ public class AdminUIController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("You have not entered data in one or more fields. Please try again.");
             alert.showAndWait();
-        } else {
+        }else {
             fill.updateP(lblIDP, txtTitle, txtDesc);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -348,6 +345,7 @@ public class AdminUIController implements Initializable {
             ProjectTbl.setDisable(false);
         }
     }
+
 
 
     public void cancel() {
@@ -419,7 +417,7 @@ public class AdminUIController implements Initializable {
         alert.setContentText("Project information successfully updated.");
         alert.showAndWait();
 
-        fill.initializeP(projectIdCol, projectTitleCol, ProjectTbl, txtSearchP);
+        fill.initializeP(projectIdCol,projectTitleCol, ProjectTbl, txtSearchP);
         btnCancelP.setVisible(false);
         btnUpdateP.setVisible(false);
         btnSaveP.setVisible(false);
@@ -432,7 +430,7 @@ public class AdminUIController implements Initializable {
         Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
 
         System.out.println(employee.getId());
-        fill.delete(employee.getId(), lblID, txtFirstName, txtLastName, EmployeeTbl);
+        fill.delete(employee.getId(),lblID,txtFirstName,txtLastName,EmployeeTbl);
         System.out.println("Successful deleted");
 
         fill.initialize(idCol, firstNameCol, lastNameCol, EmployeeTbl, txtSearch);
@@ -442,15 +440,15 @@ public class AdminUIController implements Initializable {
         Project project = ProjectTbl.getSelectionModel().getSelectedItem();
 
         fill.deleteP(project.getProjectId(), lblIDP, txtTitle, txtDesc, ProjectTbl);
-        fill.initializeP(projectIdCol, projectTitleCol, ProjectTbl, txtSearchP);
+        fill.initializeP(projectIdCol,projectTitleCol, ProjectTbl, txtSearchP);
     }
 
     @FXML
-    public void handleAssignBtnAction() throws IOException {
+    public void handleAssignBtnAction() throws IOException{
         System.out.println("Assign Button Clicked");
 
 
-        Project project = ProjectTbl.getSelectionModel().getSelectedItem();
+        Project project= ProjectTbl.getSelectionModel().getSelectedItem();
         projectId = project.getProjectId();
 
         System.out.println("Project ID sent = " + projectId);
@@ -461,7 +459,7 @@ public class AdminUIController implements Initializable {
         FXMLLoader assignLoader = new FXMLLoader(getClass().getResource("Assign.fxml"));
 
 
-        Parent root = assignLoader.load();
+        Parent root =  assignLoader.load();
 
         //Pass project Id to another window
         AssignController controller = assignLoader.<AssignController>getController();
@@ -480,8 +478,9 @@ public class AdminUIController implements Initializable {
     @FXML
     public void handleWriteReportBtnAction() throws SQLException {
         System.out.println("Report btn Clicked");
-        Project project = ProjectTbl.getSelectionModel().getSelectedItem();
+        Project project= ProjectTbl.getSelectionModel().getSelectedItem();
         projectId = project.getProjectId();
+
 
 
         System.out.println("Project Id sent to write report = " + projectId);
@@ -507,33 +506,6 @@ public class AdminUIController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
-
-    }
-
-    @FXML
-    public void handleNotifyBtnAction() throws IOException {
-        System.out.println("Notify Button CLicked");
-        String email = "";
-
-        Employee employee = EmployeeTbl.getSelectionModel().getSelectedItem();
-        email = employee.getEmail();
-
-
-
-        FXMLLoader notifyLoader = new FXMLLoader(getClass().getResource("Notify.fxml"));
-        Parent root = notifyLoader.load();
-
-        NotifyController controller = notifyLoader.<NotifyController>getController();
-        controller.initEmpEmailId(email);
-
-
-
-
-
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
 
     }
 
